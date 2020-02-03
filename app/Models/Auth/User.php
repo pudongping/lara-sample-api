@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // 管理员 id
+    const ADMIN_ID = 1;
+    // 系统管理员 id
+    const SYSADMIN_ID = 10000;
+
     /**
      * The attributes that are mass assignable.
      *
