@@ -16,7 +16,7 @@ use Throwable;
 
 class ApiException extends Exception
 {
-    public function __construct(int $code = 0, $params = null, $message = null)
+    public function __construct(int $code = 0, $params = [], $message = null)
     {
         Code::setCode($code, $message, $params);
         list($code, $msg) = Code::getCode();
