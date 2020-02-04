@@ -17,18 +17,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('Auth')
+Route::middleware('throttle:' . config('api.rate_limits.sign'))
     ->group(function () {
 
-    });
+        // 用户注册
+        Route::post('register', 'Auth\UsersController@register')->name('users.register');
 
-// 用户注册
-Route::post('register', 'Auth\UsersController@register')->name('users.register');
+    });
 
 Route::namespace('Api')
     ->group(function () {
 
+        Route::middleware('throttle:' . config('api.rate_limits.access'))
+            ->group(function () {
 
-        Route::get('tests', 'ApiTestsController@index')->name('tests.index');
+                Route::get('tests', 'ApiTestsController@index')->name('tests.index');
 
+            });
     });
