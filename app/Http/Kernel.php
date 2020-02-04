@@ -20,6 +20,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
+        // 开启跨域
+        \App\Http\Middleware\EnableCross::class,
+
     ];
 
     /**
@@ -47,6 +50,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\InitParams::class,
             // 记录访问日志
             \App\Http\Middleware\LogInfo::class,
+            // 设置 http 请求头部信息
+            \App\Http\Middleware\AcceptHeader::class,
         ],
     ];
 
