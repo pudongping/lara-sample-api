@@ -52,6 +52,7 @@ class Code
     const ERR_MENU_FIELD = 20001;
     const ERR_EXPORT = 20002;
     const ERR_QRCODE = 20003;
+    const ERR_USER_EXIST = 20004;
 
 
     public static $msgs = [
@@ -81,6 +82,7 @@ class Code
         self::ERR_MENU_FIELD => '该菜单存在子菜单，无法删除',
         self::ERR_EXPORT => '导出文件失败，请联系管理员',
         self::ERR_QRCODE => '二维码生成错误',
+        self::ERR_USER_EXIST => '账号已存在',
     ];
 
     /**

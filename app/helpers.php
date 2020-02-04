@@ -51,3 +51,51 @@ if (! function_exists('user_log')) {
         $log->save();
     }
 }
+
+if (! function_exists('validateChinaPhoneNumber')) {
+    /**
+     * 验证中国手机号码是否合法
+     *
+     * @param string $number
+     * @return bool
+     */
+    function validateChinaPhoneNumber(string $number): bool
+    {
+        return preg_match('/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199)\d{8}$/', $number);
+    }
+}
+
+if (! function_exists('validateUserName')) {
+    /**
+     * 验证用户名是否合法
+     *
+     * @param string $username
+     * @return bool
+     */
+    function validateUserName(string $username): bool
+    {
+        return preg_match('/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/', $username);
+    }
+}
+
+if (! function_exists('fetchAccountField')) {
+    /**
+     * 根据账号的值获取账号字段
+     *
+     * @param string $login
+     * @param string $defaultField
+     * @return string
+     */
+    function fetchAccountField(string $login, string $defaultField = 'name'): string
+    {
+        $map = [
+            'email' => filter_var($login, FILTER_VALIDATE_EMAIL),
+            'phone' => validateChinaPhoneNumber($login),
+            'name' => validateUserName($login)
+        ];
+        foreach ($map as $field => $value) {
+            if ($value) return $field;
+        }
+        return $defaultField;
+    }
+}
