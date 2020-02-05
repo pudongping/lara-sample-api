@@ -18,6 +18,8 @@ class UserRequest extends Request
             'register' => [
                 'account' => 'required|between:4,40',
                 'password' => ['required', 'string', 'min:8', 'confirmed'],  // password_confirmation
+                'captcha_key' => 'required|string',
+                'captcha_code' => 'required|string',
             ],
         ];
 
@@ -28,6 +30,8 @@ class UserRequest extends Request
     {
         return [
             'password' => '密码',
+            'captcha_key' => '图片验证码的 key',
+            'captcha_code' => '图片验证码',
         ];
     }
 

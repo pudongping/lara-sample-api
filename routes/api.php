@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('throttle:' . config('api.rate_limits.sign'))
     ->group(function () {
 
+        // 图片验证码
+        Route::post('captchas', 'Auth\CaptchasController@store')->name('captchas.store');
         // 用户注册
         Route::post('register', 'Auth\UsersController@register')->name('users.register');
 

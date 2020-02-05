@@ -35,6 +35,19 @@ class UserRepository extends BaseRepository
      */
     public function register($request)
     {
+        $captchaData = cache($request->captcha_key);
+        if (!$captchaData) {
+            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码已失效']);
+            return false;
+        }
+
+        if (!hash_equals($captchaData['code'], $request->captcha_code)) {
+            // 输入的图片验证码错误则直接删除掉
+            \Cache::forget($request->captcha_key);
+            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码错误']);
+            return false;
+        }
+
          $account = $request->account;
          $accountField = fetchAccountField($account);
          if ('name' === $accountField) {
