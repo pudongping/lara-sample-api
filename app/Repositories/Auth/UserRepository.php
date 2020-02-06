@@ -205,7 +205,7 @@ class UserRepository extends BaseRepository
         return [
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,  // 单位为秒
+            'expires_in' => auth()->factory()->getTTL() * 60,  // 单位为秒，3600s
         ];
     }
 
