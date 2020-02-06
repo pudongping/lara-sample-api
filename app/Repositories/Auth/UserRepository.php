@@ -134,7 +134,24 @@ class UserRepository extends BaseRepository
             $user = $this->store($input);
         }
 
-        return $user->toArray();
+        $token = auth()->login($user);  // 会直接通过 jwt-auth 返回 token
+
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * 获取令牌数组结构
+     *
+     * @param $token 令牌 token
+     * @return array
+     */
+    protected function respondWithToken($token)
+    {
+        return [
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,  // 单位为秒
+        ];
     }
 
 }
