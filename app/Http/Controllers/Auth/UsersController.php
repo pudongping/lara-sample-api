@@ -32,4 +32,19 @@ class UsersController extends Controller
         return $this->response->send($data);
     }
 
+    /**
+     * 第三方授权登录
+     *
+     * @param $socialType
+     * @param UserRequest $request
+     * @return mixed
+     * @throws \App\Exceptions\ApiException
+     */
+    public function socialStore($socialType, UserRequest $request)
+    {
+        $request->merge(['socialType' => $socialType]);
+        $data = $this->userRepository->socialStore($request);
+        return $this->response->send($data);
+    }
+
 }

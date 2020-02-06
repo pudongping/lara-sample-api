@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\Request;
+use App\Models\Auth\User;
 
 class UserRequest extends Request
 {
@@ -21,7 +22,16 @@ class UserRequest extends Request
                 'captcha_key' => 'required|string',
                 'captcha_code' => 'required|string',
             ],
+            'socialStore' => [
+                'code' => 'required_without:access_token|string',
+                'access_token' => 'required_without:code|string',
+            ],
         ];
+
+        // 微信授权登录的流程中换取用户信息的接口，需要同时提交 access_token 和 openid
+        if (User::$loginType[User::SOCIAL_WEIXIN] == $this->social_type && !$this->code) {
+            $rules['socialStore']['openid']  = 'required|string';
+        }
 
         return $this->useRule($rules);
     }

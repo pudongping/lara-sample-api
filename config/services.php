@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'weixin' => [
+        'client_id' => env('WEIXIN_KEY'),   // 微信 appid
+        'client_secret' => env('WEIXIN_SECRET'),  // 微信 secret
+        'redirect' => env('WEIXIN_REDIRECT_URI')   // 回调地址
+    ],
+
 ];

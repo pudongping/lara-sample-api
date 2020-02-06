@@ -24,6 +24,8 @@ Route::middleware('throttle:' . config('api.rate_limits.sign'))
         Route::post('captchas', 'Auth\CaptchasController@store')->name('captchas.store');
         // 用户注册
         Route::post('register', 'Auth\UsersController@register')->name('users.register');
+        // 第三方登录
+        Route::post('socials/{social_type}/authorizations', 'Auth\UsersController@socialStore')->name('socials.authorizations.store');
 
     });
 
@@ -34,6 +36,7 @@ Route::namespace('Api')
             ->group(function () {
 
                 Route::get('tests', 'ApiTestsController@index')->name('tests.index');
+                Route::get('tt', 'ApiTestsController@tt')->name('tests.tt');
 
             });
     });
