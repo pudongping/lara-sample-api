@@ -68,6 +68,13 @@ class UserRepository extends BaseRepository
          return $user;
     }
 
+    /**
+     * 第三方授权登录
+     *
+     * @param $request
+     * @return array|bool
+     * @throws ApiException
+     */
     public function socialStore($request)
     {
         $socialType = strtolower($request->socialType);
@@ -137,6 +144,54 @@ class UserRepository extends BaseRepository
         $token = auth()->login($user);  // 会直接通过 jwt-auth 返回 token
 
         return $this->respondWithToken($token);
+    }
+
+    /**
+     * 用户名/中国手机号/邮箱登录
+     *
+     * @param $request
+     * @return array|bool
+     * @throws ApiException
+     */
+    public function login($request)
+    {
+        $account = $request->account;
+        $accountField = fetchAccountField($account);
+        if ('name' === $accountField) {
+            if (!validateUserName($account)) {
+                Code::setCode(Code::ERR_PARAMS, null, ['账号需以字母开头，可以包括字母、数字、下划线、横杠']);
+                return false;
+            }
+        }
+        $credentials = [
+            $accountField => $account,
+            'password' => $request->password
+        ];
+
+        $token = auth('api')->attempt($credentials);
+        if (!$token) {
+            throw new ApiException(Code::ERR_PARAMS, ['参数错误，未获取用户信息']);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * 刷新 token
+     *
+     * @return array
+     */
+    public function refreshToken()
+    {
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    /**
+     * 删除 token （退出登录）
+     */
+    public function logout()
+    {
+        auth()->logout();
     }
 
     /**

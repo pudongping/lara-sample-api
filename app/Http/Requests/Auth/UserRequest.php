@@ -26,6 +26,10 @@ class UserRequest extends Request
                 'code' => 'required_without:access_token|string',
                 'access_token' => 'required_without:code|string',
             ],
+            'store' => [
+                'account' => 'required|between:4,40|string',
+                'password' => ['required', 'string', 'min:8']
+            ],
         ];
 
         // 微信授权登录的流程中换取用户信息的接口，需要同时提交 access_token 和 openid
@@ -51,6 +55,7 @@ class UserRequest extends Request
             'account.required'      => '账号不能为空',
             'account.between'       => '账号必须介于 4 - 40 个字符之间',
             'password.confirmed'    => '请输入确认密码或确认密码和密码不一致',
+            'password.min'          => '密码长度不低于 8 个字符',
         ];
 
         $messages = array_merge(parent::messages(), $messages);

@@ -33,6 +33,19 @@ class UsersController extends Controller
     }
 
     /**
+     * 用户名/中国手机号/邮箱登录
+     *
+     * @param UserRequest $request
+     * @return mixed
+     * @throws \App\Exceptions\ApiException
+     */
+    public function login(UserRequest $request)
+    {
+        $data = $this->userRepository->login($request);
+        return $this->response->send($data);
+    }
+
+    /**
      * 第三方授权登录
      *
      * @param $socialType
@@ -45,6 +58,28 @@ class UsersController extends Controller
         $request->merge(['socialType' => $socialType]);
         $data = $this->userRepository->socialStore($request);
         return $this->response->send($data);
+    }
+
+    /**
+     * 刷新 token
+     *
+     * @return mixed
+     */
+    public function refreshToken()
+    {
+        $data = $this->userRepository->refreshToken();
+        return $this->response->send($data);
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return mixed
+     */
+    public function logout()
+    {
+        $this->userRepository->logout();
+        return $this->response->send();
     }
 
 }
