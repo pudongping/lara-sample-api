@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\UserRequest;
 use App\Repositories\Auth\UserRepository;
+use App\Models\Auth\User;
 
 class UsersController extends Controller
 {
@@ -58,6 +59,29 @@ class UsersController extends Controller
         $request->merge(['socialType' => $socialType]);
         $data = $this->userRepository->socialStore($request);
         return $this->response->send($data);
+    }
+
+    /**
+     * 某个用户的个人信息
+     *
+     * @param User $user
+     * @param Request $request
+     * @return mixed
+     */
+    public function show(User $user, Request $request)
+    {
+        return $this->response->send($user);
+    }
+
+    /**
+     * 我的个人信息
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function me(Request $request)
+    {
+        return $this->response->send($request->user());
     }
 
     /**

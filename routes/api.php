@@ -36,14 +36,22 @@ Route::middleware('throttle:' . config('api.rate_limits.sign'))
 
     });
 
-Route::namespace('Api')
+Route::middleware('throttle:' . config('api.rate_limits.access'))
     ->group(function () {
+        // 不需要登录就可以访问的
+        // 某个用户的详情
+        Route::get('users/{user}', 'Auth\UsersController@show')->name('users.show');
 
-        Route::middleware('throttle:' . config('api.rate_limits.access'))
-            ->group(function () {
+        // 登录后可以访问的接口
+        Route::middleware(['checkUserLogin'])->group(function() {
 
-                Route::get('tests', 'ApiTestsController@index')->name('tests.index');
-                Route::get('tt', 'ApiTestsController@tt')->name('tests.tt');
+            // 当前登录用户信息
+            Route::get('user', 'Auth\UsersController@me')->name('user.show');
 
-            });
+            Route::get('tests', 'Api\ApiTestsController@index')->name('tests.index');
+
+
+        });
+
+
     });

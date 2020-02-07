@@ -28,11 +28,6 @@ class UserTransformer extends BaseTransformer
      */
     public function transform($resource)
     {
-        return [
-
-            'id' => $resource->id,
-            'name' => $resource->name,
-
-        ];
+        return $resource->toArray();
     }
 }

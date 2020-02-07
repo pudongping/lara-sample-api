@@ -42,9 +42,6 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
             // 以下为自定义中间件
             // 初始化参数
             \App\Http\Middleware\InitParams::class,
@@ -52,6 +49,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LogInfo::class,
             // 设置 http 请求头部信息
             \App\Http\Middleware\AcceptHeader::class,
+
+            'throttle:60,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 
@@ -73,6 +73,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+
+        'checkUserLogin' => \App\Http\Middleware\CheckUserLogin::class,
     ];
 
     /**

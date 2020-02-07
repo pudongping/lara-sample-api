@@ -1,18 +1,20 @@
 <?php
 /**
- *  设置 http 请求头信息
+ * 检查用户是否已经登录
  *
  * Created by PhpStorm.
  * User: Alex
- * Date: 2020/2/3
- * Time: 23:53
+ * Date: 2020/2/7
+ * Time: 12:03
  */
 
 namespace App\Http\Middleware;
 
+use App\Support\Code;
 use Closure;
+use App\Exceptions\ApiException;
 
-class AcceptHeader
+class CheckUserLogin
 {
     /**
      * Handle an incoming request.
@@ -23,8 +25,10 @@ class AcceptHeader
      */
     public function handle($request, Closure $next)
     {
-        $request->headers->set('Accept', 'application/json; charset=utf-8');
-
+         if (!\Auth::guard('api')->check()) {
+             throw new ApiException(Code::ERR_HTTP_UNAUTHORIZED);
+         }
         return $next($request);
     }
+
 }
