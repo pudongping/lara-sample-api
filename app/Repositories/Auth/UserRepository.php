@@ -107,33 +107,32 @@ class UserRepository extends BaseRepository
                 }
             }
             // 授权后获取的用户信息
-            $oauthUser = $driver->userFromToken($accessToken);
+            $oauthUser = $driver->userFromToken($accessToken);  // Laravel\Socialite\Two\AbstractProvider::class@userFromToken
         } catch (\Exception $e) {
             throw new ApiException(Code::ERR_PARAMS, ['参数错误，未获取用户信息']);
         }
 
         $user = null;
         $unionid = '';
-        switch ($socialType) {
-            case User::$loginType[User::SOCIAL_WEIXIN]:
-                // 只有在用户将公众号绑定到微信开放平台帐号后，才会出现 unionid 字段
-                // 获取微信 unionid
-                $unionid = $oauthUser->offsetExists('unionid') ? $oauthUser->offsetGet('unionid') : null;
-                if ($unionid) {
-                    $user = User::where('unionid', $unionid)->first();
-                }
-                break;
+
+        if (User::$loginType[User::SOCIAL_WEIXIN] === $socialType) {
+            // 只有在用户将公众号绑定到微信开放平台帐号后，才会出现 unionid 字段
+            // 获取微信 unionid  Laravel\Socialite\AbstractUser::class@offsetExists
+            $unionid = $oauthUser->offsetExists('unionid') ? $oauthUser->offsetGet('unionid') : null;
+            if ($unionid) {
+                $user = User::where('unionid', $unionid)->where('social_type', $socialTypeCode)->first();
+            }
         }
 
         if (!$user) {
             // 否则直接用 openid 去查询。$oauthUser->getId() 默认为 openid
-            $user = User::where('openid', $oauthUser->getId())->first();
+            $user = User::where('openid', $oauthUser->getId())->where('social_type', $socialTypeCode)->first();
         }
 
         if (!$user) {  // 当前没有用户时则先创建用户
             $input = [
                 'social_type' => $socialTypeCode,
-                'nickname' => $oauthUser->getNickname(),
+                'nickname' => $oauthUser->getNickname(),   // Laravel\Socialite\AbstractUser::class@getNickname
                 'headimgurl' => $oauthUser->getAvatar(),
                 'openid' => $oauthUser->getId(),
                 'unionid' => $unionid

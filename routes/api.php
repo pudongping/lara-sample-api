@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('throttle:' . config('api.rate_limits.sign'))
+Route::middleware('throttle:' . config('api.rate_limits.sign'))  // 1分钟/10次
     ->group(function () {
 
         // 图片验证码
@@ -36,7 +36,7 @@ Route::middleware('throttle:' . config('api.rate_limits.sign'))
 
     });
 
-Route::middleware('throttle:' . config('api.rate_limits.access'))
+Route::middleware('throttle:' . config('api.rate_limits.access'))  // 1分钟/60次
     ->group(function () {
         // 不需要登录就可以访问的
         // 某个用户的详情
