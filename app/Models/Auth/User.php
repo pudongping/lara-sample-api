@@ -84,4 +84,9 @@ class User extends Authenticatable implements JWTSubject
         return static::$loginType[$value];
     }
 
+    public function getAvatarAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . $value : '';
+    }
+
 }

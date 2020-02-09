@@ -85,6 +85,18 @@ class UsersController extends Controller
     }
 
     /**
+     * 修改用户信息
+     *
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function update(UserRequest $request)
+    {
+        $data = $this->userRepository->modify($request);
+        return $this->response->send($data);
+    }
+
+    /**
      * 刷新 token
      *
      * @return mixed

@@ -47,6 +47,9 @@ Route::middleware('throttle:' . config('api.rate_limits.access'))  // 1分钟/60
 
             // 当前登录用户信息
             Route::get('user', 'Auth\UsersController@me')->name('user.show');
+            // 编辑登录用户信息
+            Route::patch('user', 'Auth\UsersController@update')->name('user.update');
+
             // 上传图片
             Route::post('images', 'Common\ImagesController@store')->name('images.store');
 

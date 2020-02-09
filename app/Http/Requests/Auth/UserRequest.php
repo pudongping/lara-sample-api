@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\Request;
 use App\Models\Auth\User;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends Request
 {
@@ -15,6 +16,8 @@ class UserRequest extends Request
      */
     public function rules()
     {
+        $userId = auth('api')->id();
+
         $rules = [
             'register' => [
                 'account' => 'required|between:4,40',
@@ -29,6 +32,21 @@ class UserRequest extends Request
             'store' => [
                 'account' => 'required|between:4,40|string',
                 'password' => ['required', 'string', 'min:8']
+            ],
+            'update' => [
+                'name' => 'between:3,20|regex:/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/|unique:users,name,' .$userId,
+                'email'=>'email|unique:users,email,'.$userId,
+                'phone'=>[
+                    'regex:/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199)\d{8}$/',
+                    Rule::unique('users')->ignore($userId),
+                ],
+                // images 表中 id 是否存在，type 是否为 avatar，用户 id 是否是当前登录的用户 id
+                // 'avatar_image_id' => 'exists:images,id,type,avatar,user_id,'.$userId,
+                'avatar_image_id' => [
+                    Rule::exists('images', 'id')->where(function ($query) use ($userId) {
+                        $query->where('type', 'avatar')->where('user_id', $userId);
+                    }),
+                ],
             ],
         ];
 
@@ -46,6 +64,10 @@ class UserRequest extends Request
             'password' => '密码',
             'captcha_key' => '图片验证码的 key',
             'captcha_code' => '图片验证码',
+            'name' => '用户名',
+            'email' => '邮箱',
+            'phone' => '手机号',
+            'avatar_image_id' => '用户头像图片资源 id'
         ];
     }
 
@@ -56,6 +78,8 @@ class UserRequest extends Request
             'account.between'       => '账号必须介于 4 - 40 个字符之间',
             'password.confirmed'    => '请输入确认密码或确认密码和密码不一致',
             'password.min'          => '密码长度不低于 8 个字符',
+            'name.regex'            => '用户名首字母必须为字母，且只能为字母、数字、下划线、横杠、介于 3 - 20 个字符之间',
+            'phone.regex'           => '手机号格式不正确',
         ];
 
         $messages = array_merge(parent::messages(), $messages);

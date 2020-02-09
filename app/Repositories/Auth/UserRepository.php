@@ -14,15 +14,20 @@ use App\Repositories\BaseRepository;
 use App\Models\Auth\User;
 use App\Support\Code;
 use App\Exceptions\ApiException;
+use App\Models\Common\Image;
 
 class UserRepository extends BaseRepository
 {
 
     protected $model;
+    protected $imageModel;
 
-    public function __construct(User $user)
-    {
+    public function __construct(
+        User $user,
+        Image $imageModel
+    ) {
         $this->model = $user;
+        $this->imageModel = $imageModel;
     }
 
     /**
@@ -173,6 +178,25 @@ class UserRepository extends BaseRepository
         }
 
         return $this->respondWithToken($token);
+    }
+
+    /**
+     * 修改登录用户信息
+     *
+     * @param $request
+     * @return mixed
+     */
+    public function modify($request)
+    {
+        $input = $request->only(['name', 'email', 'phone']);
+        if ($request->avatar_image_id) {
+            $image = $this->imageModel->find($request->avatar_image_id);
+            $input['avatar'] = $image->path;
+        }
+
+        $data = $this->update($request->user()->id, $input);
+
+        return $data;
     }
 
     /**
