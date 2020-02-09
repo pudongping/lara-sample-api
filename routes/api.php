@@ -43,7 +43,7 @@ Route::middleware('throttle:' . config('api.rate_limits.access'))  // 1分钟/60
         Route::get('users/{user}', 'Auth\UsersController@show')->name('users.show');
 
         // 登录后可以访问的接口
-        Route::middleware(['checkUserLogin'])->group(function() {
+        Route::middleware(['auth:api'])->group(function() {
 
             // 当前登录用户信息
             Route::get('user', 'Auth\UsersController@me')->name('user.show');

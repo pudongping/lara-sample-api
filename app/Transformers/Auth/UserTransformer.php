@@ -28,6 +28,23 @@ class UserTransformer extends BaseTransformer
      */
     public function transform($resource)
     {
-        return $resource->toArray();
+        return [
+
+            'id' => $resource->id,
+            'social_type' => $resource->social_type,
+            'name' => $resource->name,
+            'phone' => $resource->phone,
+            'email' => $resource->email,
+            'nickname' => $resource->nickname,
+            'sex' => $resource->sex,
+            'city' => $resource->city,
+            'province' => $resource->province,
+            'country' => $resource->country,
+            'avatar' => $resource->avatar,
+            'headimgurl' => $resource->headimgurl,
+            'created_at' => $resource->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $resource->updated_at->format('Y-m-d H:i:s'),
+
+        ];
     }
 }

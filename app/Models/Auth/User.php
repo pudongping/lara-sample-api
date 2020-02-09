@@ -79,4 +79,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function getSocialTypeAttribute($value)
+    {
+        return static::$loginType[$value];
+    }
+
 }
