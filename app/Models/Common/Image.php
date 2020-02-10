@@ -7,6 +7,6 @@ use App\Models\Model;
 class Image extends Model
 {
 
-    protected $fillable = ['user_id', 'type', 'path'];
+    protected $fillable = ['user_id', 'guard', 'type', 'path'];
 
 }
