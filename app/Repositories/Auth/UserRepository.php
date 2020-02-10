@@ -145,7 +145,7 @@ class UserRepository extends BaseRepository
             $user = $this->store($input);
         }
 
-        $token = auth()->login($user);  // 会直接通过 jwt-auth 返回 token
+        $token = auth('api')->login($user);  // 会直接通过 jwt-auth 返回 token
 
         return $this->respondWithToken($token);
     }
@@ -206,7 +206,7 @@ class UserRepository extends BaseRepository
      */
     public function refreshToken()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('api')->refresh());
     }
 
     /**
@@ -214,7 +214,7 @@ class UserRepository extends BaseRepository
      */
     public function logout()
     {
-        auth()->logout();
+        auth('api')->logout();
     }
 
     /**
@@ -228,7 +228,7 @@ class UserRepository extends BaseRepository
         return [
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,  // 单位为秒，3600s
+            'expires_in' => auth('api')->factory()->getTTL() * 60,  // 单位为秒，3600s
         ];
     }
 
