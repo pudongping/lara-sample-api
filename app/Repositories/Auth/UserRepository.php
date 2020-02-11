@@ -159,6 +159,7 @@ class UserRepository extends BaseRepository
      */
     public function login($request)
     {
+        $remeberMe = boolval($request->remember);
         $account = $request->account;
         $accountField = fetchAccountField($account);
         if ('name' === $accountField) {
@@ -172,7 +173,12 @@ class UserRepository extends BaseRepository
             'password' => $request->password
         ];
 
-        $token = auth('api')->attempt($credentials);
+        if ($remeberMe) {  // 勾选了「记住我」时
+            $token = auth('api')->setTTL(config('api.custom_jwt.remember_me_ttl'))->attempt($credentials);
+        } else {
+            $token = auth('api')->attempt($credentials);
+        }
+
         if (!$token) {
             throw new ApiException(Code::ERR_PARAMS, ['参数错误，未获取用户信息']);
         }
