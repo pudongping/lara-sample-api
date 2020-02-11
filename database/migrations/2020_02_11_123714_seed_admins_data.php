@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGuardToImagesTable extends Migration
+class SeedAdminsData extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddGuardToImagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('guard_name', 20)->default('')->after('user_id');
-        });
+        $admin = [
+            'name' => 'admin',
+            'password' => bcrypt('123456'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        \DB::table('admins')->insert($admin);
     }
 
     /**
@@ -25,8 +29,6 @@ class AddGuardToImagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->dropColumn('guard_name');
-        });
+        \DB::table('admins')->truncate();
     }
 }
