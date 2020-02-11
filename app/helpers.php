@@ -28,16 +28,16 @@ if (! function_exists('getCurrentAction')) {
 
 if (! function_exists('user_log')) {
     /**
-     * 用户操作日志
+     * 管理员操作日志
      *
      * @param null $msg
      */
     function user_log($msg = null)
     {
-        $user = Auth::user();
+        $user = Auth::guard(Auth::getDefaultDriver())->user();
 
         if (empty($user)) {
-            $uid = \App\Models\Auth\User::SYSADMIN_ID;
+            $uid = \App\Models\Auth\Admin::SYSADMIN_ID;
         } else {
             $uid = $user->id;
         }
@@ -45,6 +45,7 @@ if (! function_exists('user_log')) {
         $log = new \App\Models\Admin\Setting\Log();
         $log->user_id = $uid;
         $log->client_ip = request()->ip();
+        $log->guard_name = Auth::getDefaultDriver();
         // JSON_UNESCAPED_UNICODE + JSON_UNESCAPED_SLASHES = 256 + 64 = 320
         $log->header = json_encode(request()->header(), 320);
         $log->description = $msg;

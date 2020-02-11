@@ -11,11 +11,6 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    // 管理员 id
-    const ADMIN_ID = 1;
-    // 系统管理员 id
-    const SYSADMIN_ID = 10000;
-
     const NORMAL_LOGIN = 0;
     const SOCIAL_WEIXIN = 1;
     const SOCIAL_WEIBO = 2;
@@ -81,7 +76,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function getSocialTypeAttribute($value)
     {
-        return static::$loginType[$value];
+        return static::$loginType[$value] ?? static::$loginType[static::NORMAL_LOGIN];
     }
 
     public function getAvatarAttribute($value)

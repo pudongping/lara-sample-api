@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Auth\User;
+use App\Models\Auth\Admin;
 
 class GenerateToken extends Command
 {
@@ -49,7 +50,9 @@ class GenerateToken extends Command
         $user = null;
         if ('api' == $guard) {
             $user = User::find($userId);
-         }
+         } elseif ('admin' == $guard) {
+            $user = Admin::find($userId);
+        }
 
         if (!$user) {
             return $this->error('用户不存在');
@@ -57,7 +60,14 @@ class GenerateToken extends Command
 
         // 一年以后过期
         $ttl = 365*24*60;
-        $this->info(auth('api')->setTTL($ttl)->login($user));
+
+        if ('api' == $guard) {
+            $this->info(auth('api')->setTTL($ttl)->login($user));
+        } elseif ('admin' == $guard) {
+            $this->info(auth('admin')->setTTL($ttl)->login($user));
+        } else {
+            $this->error('生成 token 失败！');
+        }
 
     }
 }
