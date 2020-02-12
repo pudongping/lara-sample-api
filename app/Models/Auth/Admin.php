@@ -37,7 +37,7 @@ class Admin extends Authenticatable implements JWTSubject
     ];
 
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'state'
+        'name', 'email', 'phone', 'password', 'state', 'avatar'
     ];
 
     protected $hidden = [
@@ -47,6 +47,11 @@ class Admin extends Authenticatable implements JWTSubject
     public function getStateAttribute($value)
     {
         return self::$state[$value] ?? self::$state[self::STATE_NORMAL];
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        return !empty($value) ? config('app.url') . $value : '';
     }
 
     /**

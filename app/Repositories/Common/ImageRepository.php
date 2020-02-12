@@ -44,7 +44,7 @@ class ImageRepository extends BaseRepository
 
         $input = [
             'user_id' => $user->id,
-            'guard' => $guard,
+            'guard_name' => $guard,
             'type' => $request->type,
             'path' => $result['relativePath']
         ];

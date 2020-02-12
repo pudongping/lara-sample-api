@@ -180,7 +180,7 @@ class UserRepository extends BaseRepository
         }
 
         if (!$token) {
-            throw new ApiException(Code::ERR_PARAMS, ['参数错误，未获取用户信息']);
+            throw new ApiException(Code::ERR_PARAMS, ['账号或密码错误']);
         }
 
         return $this->respondWithToken($token);
@@ -198,6 +198,14 @@ class UserRepository extends BaseRepository
         if ($request->avatar_image_id) {
             $image = $this->imageModel->find($request->avatar_image_id);
             $input['avatar'] = $image->path;
+        }
+
+        if ($request->new_password) {
+            if (\Hash::check($request->current_password, $request->user()->password)) {
+                $input['password'] = bcrypt($request->new_password);
+            } else {
+                throw new ApiException(Code::ERR_PARAMS, ['当前密码错误']);
+            }
         }
 
         $data = $this->update($request->user()->id, $input);

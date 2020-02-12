@@ -85,7 +85,7 @@ class UsersController extends Controller
     }
 
     /**
-     * 修改用户信息
+     * 修改我的个人信息
      *
      * @param UserRequest $request
      * @return mixed
