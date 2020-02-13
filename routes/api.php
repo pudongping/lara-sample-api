@@ -59,6 +59,9 @@ Route::group([
 
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
+        // 抽奖
+        Route::get('prizes', 'Common\PrizesController@lottery')->name('prizes.lottery');
+
 
         Route::get('tests', 'Api\ApiTestsController@index')->name('tests.index');
 
@@ -103,5 +106,8 @@ Route::group([
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 编辑登录用户信息
         Route::patch('users/{user}', 'Auth\AdminsController@update')->name('user.update');
+
+        // 抽奖概率测试
+        Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
     });
 });
