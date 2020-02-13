@@ -13,10 +13,12 @@ namespace App\Models\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable implements JWTSubject
 {
     use SoftDeletes;
+    use HasRoles;
 
     // 管理员 id
     const ADMIN_ID = 1;
