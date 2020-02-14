@@ -1,4 +1,12 @@
 <?php
+/**
+ * 门户用户相关
+ *
+ * Created by PhpStorm.
+ * User: Alex
+ * Date: 2020/2/13
+ * Time: 20:23
+ */
 
 namespace App\Http\Controllers\Auth;
 

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,9 +11,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -106,8 +101,14 @@ Route::group([
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 编辑登录用户信息
         Route::patch('users/{user}', 'Auth\AdminsController@update')->name('user.update');
-
         // 抽奖概率测试
         Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
+        // 角色
+        Route::resource('roles', 'Auth\RolesController');
+        Route::delete('roles_mass_destroy', 'Auth\RolesController@massDestroy')->name('roles.mass_destroy');
+        // 权限
+        Route::resource('permissions', 'Auth\PermissionsController')->except('show');
+        Route::delete('permissions_mass_destroy', 'Auth\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+
     });
 });

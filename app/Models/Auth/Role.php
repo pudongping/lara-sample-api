@@ -18,4 +18,15 @@ class Role extends SpatieRole
      */
     const DEFAULT_ROLES = ['Administrator'];
 
+    /**
+     * 「守卫」本地作用域
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeCurrentGuard($query)
+    {
+        return $query->where('guard_name', config('api.default_guard_name'));
+    }
+
 }
