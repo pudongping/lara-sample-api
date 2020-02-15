@@ -38,6 +38,7 @@ class AdminTransformer extends BaseTransformer
             'state' => $resource->state,
             'created_at' => $resource->created_at->format('Y-m-d H:i:s'),
             'updated_at' => $resource->updated_at->format('Y-m-d H:i:s'),
-    ];
+            'roles' => $resource->roles,
+        ];
     }
 }

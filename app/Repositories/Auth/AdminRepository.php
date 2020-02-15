@@ -27,11 +27,40 @@ class AdminRepository extends BaseRepository
         Admin $admin,
         Image $imageModel,
         Role $roleModel
-    )
-    {
+    ) {
         $this->model = $admin;
         $this->imageModel = $imageModel;
         $this->roleModel = $roleModel;
+    }
+
+    /**
+     * 管理员列表
+     *
+     * @param $request
+     * @return mixed
+     */
+    public function getList($request)
+    {
+        $search = $request->input('s');
+        $model = $this->model->where(function ($query) use ($search) {
+            if (!empty($search)) {
+                $query->orWhere('name', 'like', '%' . $search . '%');
+                $query->orWhere('email', 'like', '%' . $search . '%');
+                $query->orWhere('phone', 'like', '%' . $search . '%');
+            }
+        });
+
+        if (false !== ($between = $this->searchTime($request))) {
+            $model = $model->whereBetween('created_at', $between);
+        }
+
+        if (!is_null($request->state)) {
+            $model = $model->where('state', intval(boolval($request->state)));
+        }
+
+        $model = $model->with('roles');
+
+        return $this->usePage($model);
     }
 
     /**
@@ -144,6 +173,21 @@ class AdminRepository extends BaseRepository
         }
 
         return $user;
+    }
+
+    /**
+     * 删除管理员
+     *
+     * @param $user
+     * @return bool
+     */
+    public function destroy($user)
+    {
+        if (Admin::ADMIN_ID === $user->id) {
+            Code::setCode(Code::ERR_PERM, '当前用户为系统管理员，不允许删除');
+            return false;
+        }
+        $user->delete();
     }
 
     /**

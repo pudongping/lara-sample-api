@@ -28,6 +28,18 @@ class AdminsController extends Controller
     }
 
     /**
+     * 管理员列表
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        $data = $this->adminRepository->getList($request);
+        return $this->response->send($data);
+    }
+
+    /**
      * 用户名/中国手机号/邮箱登录
      *
      * @param AdminRequest $request
@@ -85,11 +97,23 @@ class AdminsController extends Controller
     {
         // 控制器基类使用了 「AuthorizesRequests」 trait，此 trait 提供了 authorize 方法
         // authorize 方法接收两个参数，第一个为授权策略的名称，第二个为进行授权验证的数据
-        // 此处的 $admin 对应 App\Policies\Auth\AdminPolicy => updatePolicy() 中的第二个参数
+        // 此处的 $user 对应 App\Policies\Auth\AdminPolicy => updatePolicy() 中的第二个参数
         $this->authorize('updatePolicy', $user);
 
         $data = $this->adminRepository->modify($request);
         return $this->response->send($data);
+    }
+
+    /**
+     * 删除管理员
+     *
+     * @param Admin $user
+     * @return mixed
+     */
+    public function destroy(Admin $user)
+    {
+        $this->adminRepository->destroy($user);
+        return $this->response->send();
     }
 
     /**
