@@ -89,6 +89,8 @@ Route::group([
 ], function () {
     // 登录之后才允许访问
     Route::group(['middleware' => ['auth:admin']], function () {
+        // 创建新用户-数据处理
+        Route::post('users', 'Auth\AdminsController@store')->name('users.store');
         // 当前登录用户信息
         Route::get('user', 'Auth\AdminsController@me')->name('user.show');
         // 某个用户的详情

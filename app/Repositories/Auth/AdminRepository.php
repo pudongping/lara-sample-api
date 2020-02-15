@@ -15,18 +15,23 @@ use App\Models\Auth\Admin;
 use App\Exceptions\ApiException;
 use App\Support\Code;
 use App\Models\Common\Image;
+use App\Models\Auth\Role;
 
 class AdminRepository extends BaseRepository
 {
     protected $model;
     protected $imageModel;
+    protected $roleModel;
 
     public function __construct(
         Admin $admin,
-        Image $imageModel
-    ) {
+        Image $imageModel,
+        Role $roleModel
+    )
+    {
         $this->model = $admin;
         $this->imageModel = $imageModel;
+        $this->roleModel = $roleModel;
     }
 
     /**
@@ -67,6 +72,34 @@ class AdminRepository extends BaseRepository
     }
 
     /**
+     * 添加用户-数据处理
+     *
+     * @param $request
+     * @return mixed
+     * @throws \Exception
+     */
+    public function storage($request)
+    {
+        $allowRoles = $this->validateRoles($request->roles);
+
+        $input = $request->only(['name', 'email', 'phone']);
+        $input['password'] = \Hash::make($request->password);
+
+        \DB::beginTransaction();
+        try {
+            $user = $this->store($input);
+            // 赋予角色
+            if ($allowRoles) $user->assignRole($allowRoles);
+            user_log('添加用户「' . $user->name . '」');
+            \DB::commit();
+        } catch (\Exception $exception) {
+            \DB::rollBack();
+        }
+
+        return $user;
+    }
+
+    /**
      * 修改登录用户信息
      *
      * @param $request
@@ -103,7 +136,7 @@ class AdminRepository extends BaseRepository
         if ($request->avatar_image_id) {
             $image = $this->imageModel
                 ->where('type', 'avatar')
-                ->where('guard_name', 'admin')
+                ->where('guard_name', config('api.default_guard_name'))
                 ->where('user_id', $request->user->id)
                 ->where('id', $request->avatar_image_id)
                 ->first();
@@ -126,6 +159,24 @@ class AdminRepository extends BaseRepository
         $data = $this->update($request->user->id, $input);  // $request->user 获取的是路由参数 user 隐式实例
 
         return $data;
+    }
+
+    /**
+     * 验证角色有效性
+     *
+     * @param array $roles 需要验证的角色数组
+     * @return array  合法的角色数组
+     */
+    public function validateRoles(array $roles): array
+    {
+        $allowRoles = [];
+        if (!empty($roles)) {
+            // 判断角色有效性
+            $rolesInDatabase = $this->roleModel->currentGuard()->pluck('name')->toArray();
+            // 合法的角色数组
+            $allowRoles = array_intersect($roles, $rolesInDatabase);
+        }
+        return $allowRoles;
     }
 
     /**

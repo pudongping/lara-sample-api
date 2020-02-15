@@ -63,6 +63,19 @@ class AdminsController extends Controller
     }
 
     /**
+     * 添加用户-数据处理
+     *
+     * @param AdminRequest $request
+     * @return mixed
+     * @throws \Exception
+     */
+    public function store(AdminRequest $request)
+    {
+        $user = $this->adminRepository->storage($request);
+        return $this->response->send($user);
+    }
+
+    /**
      * 修改用户信息
      *
      * @param UserRequest $request

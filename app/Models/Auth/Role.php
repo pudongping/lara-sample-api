@@ -1,5 +1,7 @@
 <?php
 /**
+ * @link https://learnku.com/articles/19477  Laravel-permission 中文翻译
+ *
  * Created by PhpStorm.
  * User: Alex
  * Date: 2020/2/13
@@ -12,6 +14,8 @@ use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole
 {
+
+    protected $guard_name = 'admin';
 
     /**
      * 默认角色

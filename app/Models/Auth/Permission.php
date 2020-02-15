@@ -14,6 +14,9 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
 
 class Permission extends SpatiePermission
 {
+
+    protected $guard_name = 'admin';
+
     /**
      * 默认权限，不允许删除
      */
