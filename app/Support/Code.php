@@ -75,7 +75,7 @@ class Code
         self::ERR_QUERY => '数据库操作失败',
         self::ERR_DB => '数据库连接失败',
         self::ERR_PARAMS => '参数验证失败： %s',
-        self::ERR_MODEL => '%s 数据不存在',
+        self::ERR_MODEL => '数据不存在',
         self::ERR_FILE_UP_LOAD => '文件上传出错',
         self::ERR_PERM => '没有该操作权限，请联系管理员',
         self::ERR_EXCEL_COLUMN => 'Excel文件列数异常',

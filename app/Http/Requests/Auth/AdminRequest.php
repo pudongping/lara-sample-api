@@ -16,7 +16,8 @@ class AdminRequest extends Request
     public function rules()
     {
 
-        $userId = auth('admin')->id();
+        $userId = auth('admin')->id();  // 当前已经登录用户
+        $currentUserId = $this->user->id ?? 0;  // 通过路由参数获取的用户 id
 
         $rules = [
             'login' => [
@@ -24,11 +25,14 @@ class AdminRequest extends Request
                 'password' => ['required', 'string', 'min:6']
             ],
             'update' => [
-                'name' => 'between:3,20|regex:/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/', // 通过路由参数 user 隐式获取的用户对象实例
-                'email' => 'email',
+                'name' => 'between:3,20|regex:/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/|unique:admins,name,' .$currentUserId, // 通过路由参数 user 隐式获取的用户对象实例
+                'email' => 'email|unique:admins,email,'.$currentUserId,
                 'phone' => [
                     'regex:/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199)\d{8}$/',
+                    'unique:admins,phone,'.$currentUserId
                 ],
+                'roles' => 'array',
+                'avatar_image_id' => 'exists:images,id,type,avatar,guard_name,admin,user_id,'.$currentUserId,
                 'current_password' => 'required_with:new_password|string|min:6',
                 'new_password' => 'required_with:current_password|string|min:6|confirmed',  // new_password_confirmation
             ],
@@ -42,7 +46,6 @@ class AdminRequest extends Request
                 ],
                 'roles' => 'array',
                 // images 表中 id 是否存在，type 是否为 avatar，守卫名称是否为 admin，用户 id 是否是当前登录的用户 id
-                // 'avatar_image_id' => 'exists:images,id,type,avatar,user_id,'.$userId,
                 'avatar_image_id' => [
                     Rule::exists('images', 'id')->where(function ($query) use ($userId) {
                         $query->where('type', 'avatar')->where('guard_name', 'admin')->where('user_id', $userId);
@@ -62,7 +65,8 @@ class AdminRequest extends Request
             'email' => '邮箱',
             'phone' => '手机号',
             'current_password' => '当前密码',
-            'new_password' => '新密码'
+            'new_password' => '新密码',
+            'avatar_image_id' => '头像图片'
         ];
     }
 

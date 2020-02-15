@@ -39,7 +39,8 @@ class RoleTransformer extends TransformerAbstract
             'cn_name' => $resource->cn_name,
             'created_at' => (string)$resource->created_at,
             'updated_at' => (string)$resource->updated_at,
-			
+            'permissions' => $resource->permissions,
+
         ];
     }
 }

@@ -72,8 +72,7 @@ class RolesController extends Controller
     public function edit(Role $role)
     {
         $permission = Permission::select(['id', 'name', 'cn_name'])->currentGuard()->get();
-        $checkedPermissions = $role->permissions->toArray();  // 当前角色所有的权限
-        $this->response->addMeta(compact('permission', 'checkedPermissions'));
+        $this->response->addMeta(compact('permission'));
         return $this->response->send($role);
     }
 

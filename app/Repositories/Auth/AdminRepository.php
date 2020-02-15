@@ -85,6 +85,13 @@ class AdminRepository extends BaseRepository
         $input = $request->only(['name', 'email', 'phone']);
         $input['password'] = \Hash::make($request->password);
 
+        if ($request->avatar_image_id) {
+            $image = $this->imageModel->find($request->avatar_image_id);
+            $input['avatar'] = $image->path;
+        }
+
+        $input['state'] = is_null($request->state) ? Admin::STATE_NORMAL : intval(boolval($request->state));
+
         \DB::beginTransaction();
         try {
             $user = $this->store($input);
@@ -107,45 +114,12 @@ class AdminRepository extends BaseRepository
      */
     public function modify($request)
     {
-
-        if ($request->name) {
-            $isName = $this->model->where('name', $request->name)->where('id', '<>', $request->user->id)->count();
-            if ($isName) {
-                Code::setCode(Code::ERR_USER_EXIST);
-                return false;
-            }
-        }
-
-        if ($request->email) {
-            $isEmail = $this->model->where('email', $request->email)->where('id', '<>', $request->user->id)->count();
-            if ($isEmail) {
-                Code::setCode(Code::ERR_MODEL_EXIST, null, ['当前邮箱']);
-                return false;
-            }
-        }
-
-        if ($request->phone) {
-            $isPhone = $this->model->where('phone', $request->phone)->where('id', '<>', $request->user->id)->count();
-            if ($isPhone) {
-                Code::setCode(Code::ERR_MODEL_EXIST, null, ['当前手机号']);
-                return false;
-            }
-        }
+        $allowRoles = $this->validateRoles($request->roles);
 
         $input = $request->only(['name', 'email', 'phone']);
         if ($request->avatar_image_id) {
-            $image = $this->imageModel
-                ->where('type', 'avatar')
-                ->where('guard_name', config('api.default_guard_name'))
-                ->where('user_id', $request->user->id)
-                ->where('id', $request->avatar_image_id)
-                ->first();
-            if (!$image) {
-                Code::setCode(Code::ERR_MODEL, null, ['用户头像图片资源']);
-                return false;
-            } else {
-                $input['avatar'] = $image->path;
-            }
+            $image = $this->imageModel->find($request->avatar_image_id);
+            $input['avatar'] = $image->path;
         }
 
         if ($request->new_password) {
@@ -156,9 +130,20 @@ class AdminRepository extends BaseRepository
             }
         }
 
-        $data = $this->update($request->user->id, $input);  // $request->user 获取的是路由参数 user 隐式实例
+        $input['state'] = is_null($request->state) ? Admin::STATE_NORMAL : intval(boolval($request->state));
 
-        return $data;
+        \DB::beginTransaction();
+        try {
+            $user = $this->update($request->user->id, $input);  // $request->user 获取的是路由参数 user 隐式实例
+            // 赋予角色
+            if ($allowRoles) $user->assignRole($allowRoles);
+            user_log('修改用户「' . $user->name . '」的信息为：' . json_encode($input, 256));
+            \DB::commit();
+        } catch (\Exception $exception) {
+            \DB::rollBack();
+        }
+
+        return $user;
     }
 
     /**
@@ -167,10 +152,10 @@ class AdminRepository extends BaseRepository
      * @param array $roles 需要验证的角色数组
      * @return array  合法的角色数组
      */
-    public function validateRoles(array $roles): array
+    public function validateRoles($roles): array
     {
         $allowRoles = [];
-        if (!empty($roles)) {
+        if (! empty($roles) && is_array($roles)) {
             // 判断角色有效性
             $rolesInDatabase = $this->roleModel->currentGuard()->pluck('name')->toArray();
             // 合法的角色数组

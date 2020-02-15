@@ -46,7 +46,7 @@ class RolesRepository extends BaseRepository
             $model = $model->whereBetween('created_at', $between);
         }
 
-        $model = $model->currentGuard();
+        $model = $model->with('permissions')->currentGuard();
 
         return $this->usePage($model);
     }
