@@ -123,4 +123,20 @@ class PermissionsRepository extends BaseRepository
         $this->model->whereIn('id', $request->ids)->delete();
     }
 
+    /**
+     * 验证权限有效性
+     *
+     * @param $permissions  需要验证的权限
+     * @return array  合法的权限数组
+     */
+    public function validatePermissions($permissions): array
+    {
+        $allowPermissions = [];
+        if (!empty($permissions) && is_array($permissions)) {
+            $allPermissions = $this->model->currentGuard()->pluck('name')->toArray();
+            $allowPermissions = array_intersect($permissions, $allPermissions);
+        }
+        return $allowPermissions;
+    }
+
 }

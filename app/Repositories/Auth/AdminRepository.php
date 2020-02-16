@@ -15,22 +15,22 @@ use App\Models\Auth\Admin;
 use App\Exceptions\ApiException;
 use App\Support\Code;
 use App\Models\Common\Image;
-use App\Models\Auth\Role;
+use App\Repositories\Auth\RolesRepository;
 
 class AdminRepository extends BaseRepository
 {
     protected $model;
     protected $imageModel;
-    protected $roleModel;
+    protected $rolesRepository;
 
     public function __construct(
         Admin $admin,
         Image $imageModel,
-        Role $roleModel
+        RolesRepository $rolesRepository
     ) {
         $this->model = $admin;
         $this->imageModel = $imageModel;
-        $this->roleModel = $roleModel;
+        $this->rolesRepository = $rolesRepository;
     }
 
     /**
@@ -109,7 +109,7 @@ class AdminRepository extends BaseRepository
      */
     public function storage($request)
     {
-        $allowRoles = $this->validateRoles($request->roles);
+        $allowRoles = $this->rolesRepository->validateRoles($request->roles);
 
         $input = $request->only(['name', 'email', 'phone']);
         $input['password'] = \Hash::make($request->password);
@@ -143,7 +143,7 @@ class AdminRepository extends BaseRepository
      */
     public function modify($request)
     {
-        $allowRoles = $this->validateRoles($request->roles);
+        $allowRoles = $this->rolesRepository->validateRoles($request->roles);
 
         $input = $request->only(['name', 'email', 'phone']);
         if ($request->avatar_image_id) {
@@ -188,24 +188,6 @@ class AdminRepository extends BaseRepository
             return false;
         }
         $user->delete();
-    }
-
-    /**
-     * 验证角色有效性
-     *
-     * @param array $roles 需要验证的角色数组
-     * @return array  合法的角色数组
-     */
-    public function validateRoles($roles): array
-    {
-        $allowRoles = [];
-        if (! empty($roles) && is_array($roles)) {
-            // 判断角色有效性
-            $rolesInDatabase = $this->roleModel->currentGuard()->pluck('name')->toArray();
-            // 合法的角色数组
-            $allowRoles = array_intersect($roles, $rolesInDatabase);
-        }
-        return $allowRoles;
     }
 
     /**

@@ -134,4 +134,22 @@ class RolesRepository extends BaseRepository
         $this->model->whereIn('id', $request->ids)->delete();
     }
 
+    /**
+     * 验证角色有效性
+     *
+     * @param array $roles 需要验证的角色数组
+     * @return array  合法的角色数组
+     */
+    public function validateRoles($roles): array
+    {
+        $allowRoles = [];
+        if (! empty($roles) && is_array($roles)) {
+            // 判断角色有效性
+            $rolesInDatabase = $this->model->currentGuard()->pluck('name')->toArray();
+            // 合法的角色数组
+            $allowRoles = array_intersect($roles, $rolesInDatabase);
+        }
+        return $allowRoles;
+    }
+
 }

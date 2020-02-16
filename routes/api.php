@@ -27,7 +27,7 @@ Route::group([
     // 用户注册
     Route::post('register', 'Auth\UsersController@register')->name('users.register');
     // 用户名/邮箱/手机号/登录
-    Route::post('authorizations', 'Auth\UsersController@login')->name('api.authorizations.login');
+    Route::post('authorizations', 'Auth\UsersController@login')->name('authorizations.login');
     // 第三方登录
     Route::post('socials/{social_type}/authorizations', 'Auth\UsersController@socialStore')->name('socials.authorizations.store');
 });
@@ -115,6 +115,8 @@ Route::group([
         // 权限
         Route::resource('permissions', 'Auth\PermissionsController')->except('show');
         Route::delete('permissions_mass_destroy', 'Auth\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+        // 菜单
+        Route::resource('menus', 'Admin\Setting\MenusController')->except(['create', 'show']);
 
     });
 });
