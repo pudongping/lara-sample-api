@@ -88,15 +88,28 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     // 登录之后才允许访问
-    Route::group(['middleware' => ['auth:admin']], function () {
-        // 管理员列表
-        Route::get('users', 'Auth\AdminsController@index')->name('users.index');
-        // 创建新用户-数据处理
-        Route::post('users', 'Auth\AdminsController@store')->name('users.store');
+    Route::group(['middleware' => ['auth:admin', 'check_admin_menus']], function () {
+
+        // 只有超级管理员才允许访问
+        Route::group(['middleware' => ['role:Administrator']], function () {
+            // 角色
+            Route::resource('roles', 'Auth\RolesController')->except('show');
+            Route::delete('roles_mass_destroy', 'Auth\RolesController@massDestroy')->name('roles.mass_destroy');
+            // 权限
+            Route::resource('permissions', 'Auth\PermissionsController')->except('show');
+            Route::delete('permissions_mass_destroy', 'Auth\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+            // 管理员列表
+            Route::get('users', 'Auth\AdminsController@index')->name('users.index');
+            // 创建新管理员-数据处理
+            Route::post('users', 'Auth\AdminsController@store')->name('users.store');
+            // 某个用户的详情
+            Route::get('users/{user}', 'Auth\AdminsController@show')->name('users.show');
+            // 删除用户
+            Route::delete('/users/{user}', 'Auth\AdminsController@destroy')->name('users.destroy');
+        });
+
         // 当前登录用户信息
         Route::get('user', 'Auth\AdminsController@me')->name('user.show');
-        // 某个用户的详情
-        Route::get('users/{user}', 'Auth\AdminsController@show')->name('users.show');
         // 刷新token
         Route::put('authorizations/current', 'Auth\AdminsController@refreshToken')->name('authorizations.refreshToken');
         // 删除token
@@ -105,18 +118,10 @@ Route::group([
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 编辑登录用户信息-数据处理
         Route::patch('users/{user}', 'Auth\AdminsController@update')->name('users.update');
-        // 删除用户
-        Route::delete('/users/{user}', 'Auth\AdminsController@destroy')->name('users.destroy');
-        // 抽奖概率测试
-        Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
-        // 角色
-        Route::resource('roles', 'Auth\RolesController')->except('show');
-        Route::delete('roles_mass_destroy', 'Auth\RolesController@massDestroy')->name('roles.mass_destroy');
-        // 权限
-        Route::resource('permissions', 'Auth\PermissionsController')->except('show');
-        Route::delete('permissions_mass_destroy', 'Auth\PermissionsController@massDestroy')->name('permissions.mass_destroy');
         // 菜单
         Route::resource('menus', 'Admin\Setting\MenusController')->except(['create', 'show']);
+        // 抽奖概率测试
+        Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
 
     });
 });

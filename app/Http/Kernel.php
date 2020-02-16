@@ -74,6 +74,14 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
+        // 当后台管理菜单设置权限之后判断是否有访问权限
+        'check_admin_menus' => \App\Http\Middleware\CheckAdminMenusMiddleware::class,
+
+        // https://learnku.com/articles/19477  Laravel-permission 默认中间件
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
     ];
 
     /**
