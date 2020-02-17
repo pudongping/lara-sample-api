@@ -106,6 +106,8 @@ Route::group([
             Route::get('users/{user}', 'Auth\AdminsController@show')->name('users.show');
             // 删除用户
             Route::delete('/users/{user}', 'Auth\AdminsController@destroy')->name('users.destroy');
+            // 操作日志列表
+            Route::get('logs', 'Admin\Setting\LogsController@index')->name('logs.index');
         });
 
         // 当前登录用户信息

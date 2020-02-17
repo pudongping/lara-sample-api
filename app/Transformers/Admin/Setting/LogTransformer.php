@@ -28,16 +28,7 @@ class LogTransformer extends BaseTransformer
      */
     public function transform($resource)
     {
-        return [
-
-            'id' => (int) $resource->id,
-            'client_ip' => $resource->client_ip,
-            'phone' => $resource->phone,
-            'email' => $resource->email,
-            'created_at' => $resource->created_at->format('Y-m-d H:i:s'),
-            'updated_at' => $resource->updated_at->format('Y-m-d H:i:s'),
-			
-        ];
+        return $resource->toArray();
     }
 
 
