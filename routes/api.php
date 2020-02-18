@@ -108,6 +108,10 @@ Route::group([
             Route::delete('/users/{user}', 'Auth\AdminsController@destroy')->name('users.destroy');
             // 操作日志列表
             Route::get('logs', 'Admin\Setting\LogsController@index')->name('logs.index');
+            // 站点设置
+            Route::get('settings', 'Admin\Setting\SettingsController@index')->name('settings.index');
+            // 更新站点设置
+            Route::put('settings/update', 'Admin\Setting\SettingsController@update')->name('settings.update');
         });
 
         // 当前登录用户信息
@@ -122,6 +126,8 @@ Route::group([
         Route::patch('users/{user}', 'Auth\AdminsController@update')->name('users.update');
         // 菜单
         Route::resource('menus', 'Admin\Setting\MenusController')->except(['create', 'show']);
+        // 清空所有缓存
+        Route::get('clear_cache', 'Admin\Setting\SettingsController@clearCache')->name('settings.clear_cache');
         // 抽奖概率测试
         Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
 

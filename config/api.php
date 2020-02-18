@@ -30,8 +30,12 @@ return [
     |
     */
     'cache_key' => [
+        // 缓存过期时间为 24 小时
+        'cache_expire' => 1440 * 60,
         // 图片验证码的缓存 key
         'captcha' => 'captcha-',
+        // 站点设置的缓存 key
+        'site' => 'site'
     ],
 
     /*
