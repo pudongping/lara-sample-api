@@ -34,6 +34,10 @@
 
 ![接口](https://upload-images.jianshu.io/upload_images/14623749-3c0a8bc291c7dbf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+## 注意
+
+> 如果不需要已经写好的功能模块，那么可以直接切换到 `base-api-function` 分支，这个分支中只保留了基础 api 架构方法。
+
 ## 安装
 
 1. 克隆源代码
