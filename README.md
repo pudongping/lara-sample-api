@@ -1,78 +1,131 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## 项目概述
+- 项目名称：lara-sample-api
+- 项目简介：基于 laravel6.x 开发的 api 接口
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## 功能如下
+- 用户认证 —— 基于 jwt 认证登录、注册、登出；
+- 支持多 guard （目前门户为：api、后台管理为：admin）
+- 前后台用户支持多种普通认证形式 —— 账号、手机号、邮箱
+- 前台用户第三方登录目前支持 —— 微信、微博（后续若需要支持其他第三方登录，只需要下载安装包即可，代码已经做了兼容处理）
+- 个人中心 —— 用户个人中心，编辑资料；
+- 资源管理（上传图片） —— 修改头像时上传图片；
+- 基于 RBAC 的权限控制 —— 用户，角色，权限，路由；
+- 抽奖算法（支持大转盘、九宫格、刮刮乐）
+- 系统设置
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 后端扩展包使用情况
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+扩展包 | 简介描述 | 本项目应用场景
+--- | --- | --- 
+[barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper) | 能让你的 IDE (PHPStorm, Sublime) 实现自动补全、代码智能提示和代码跟踪等功能 | 代码补全和智能提示
+[barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) | 页面调试工具栏 (对 phpdebugbar 的封装) | 开发环境中的 DEBUG
+[cyvelnet/laravel5-fractal ^2.3](https://packalyst.com/packages/package/cyvelnet/laravel5-fractal) | 比较好用的 transformer | 模型数据转换层
+[gregwar/captcha](https://github.com/Gregwar/Captcha) | 图片验证码 | 图片验证码
+[socialiteproviders/weixin](https://socialiteproviders.netlify.com/providers/weixin.html) | 微信登录管理包 | 微信网页授权登录
+[socialiteproviders/weibo](https://socialiteproviders.netlify.com/providers/weibo.html) | 微博登录管理包 | 微博授权登录
+[tymon/jwt-auth:1.0.0-rc.5](https://jwt-auth.readthedocs.io/en/develop/quick-start/) | jwt-auth 授权 | api 授权登录，需要执行 php artisan jwt:secret 以便生成 JWT_SECRET
+[composer require overtrue/laravel-query-logger --dev](https://github.com/overtrue/laravel-query-logger) | 查询日志组件 | 记录每次 sql 查询日志
+[spatie/laravel-permission](https://github.com/spatie/laravel-permission) | 角色权限管理 | 角色和权限控制
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 接口文档采用 postman 编写
 
-## Learning Laravel
+接口文档资料位于 `/doc/lara-api.postman_collection-V1.json` 采用 postman v1 版格式导出（需注意，目前 postman 支持 `Collection v1 (deprecated)` 、`Collection v2` 、`Collection v2.1 (recommended)` 三种版本）
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![接口](https://upload-images.jianshu.io/upload_images/14623749-3c0a8bc291c7dbf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 安装
 
-## Laravel Sponsors
+1. 克隆源代码
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+克隆 `lara-sample-api` 源代码到本地：
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+```
+// gitee
+git clone git@gitee.com:pudongping/lara-sample-api.git
+```
 
-## Contributing
+2. 安装扩展包依赖
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+// 先切换到 lara-sample-api 项目根目录
+cd lara-sample-api
 
-## Code of Conduct
+// 执行安装命令
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. 生成配置文件
 
-## Security Vulnerabilities
+```
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+你可以根据情况修改 .env 文件里的内容，如数据库连接、缓存、邮件设置、第三方授权登录等：
 
-## License
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DB_HOST=localhost
+DB_DATABASE=lara-sample-api
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+```
+
+4. 生成数据表及生成测试数据
+
+```
+// 需要生成测试数据则执行：
+php artisan migrate --seed
+
+// 不需要生成测试数据则执行：
+php artisan migrate
+```
+
+5. 生成秘钥
+
+```
+
+php artisan key:generate
+
+php artisan jwt:secret
+
+```
+
+6. 创建 storage 软连接
+
+```
+
+php artisan storage:link
+
+```
+
+7. 赋予 storage 相应权限
+
+```
+
+// 建议在 Linux 系统中新建一个 www 用户，并设置该用户不可登录系统
+useradd -s /sbin/nologin www
+
+// 将项目目录所有权赋予 www 用户
+chown -Rf www:www larablog 或者执行 setfacl -Rm u:www:rw lara-sample-api
+
+// 给 storage 目录赋权限
+chmod -Rf 0755 lara-sample-api/storage/
+
+```
+
+8.  配置 hosts 文件  （如果直接想部署在线上环境，则跳过此步骤）
+
+如果开发环境没有采用 Laravel Homestead 则 ip 映射以你实际为主，一般为 127.0.0.1。我这里使用的 Laravel Homestead 虚拟机的 ip 地址为：192.168.10.10
+
+```
+// Linux 或 MacOS 环境
+
+echo "192.168.10.10   lara-sample-api.test" | sudo tee -a /etc/hosts
+
+// Windows 环境
+需要打开 C:/Windows/System32/Drivers/etc/hosts  文件，然后新增一行
+
+192.168.10.10 lara-sample-api.test
+```

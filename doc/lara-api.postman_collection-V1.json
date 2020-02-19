@@ -1,0 +1,3235 @@
+{
+	"id": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+	"name": "lara-api copy",
+	"description": "api基础方法",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [],
+	"folders_order": [
+		"23722dc3-d62d-45a3-8a6b-dce21847b073",
+		"3207c20f-ef05-42ef-baaf-ca96905b3272",
+		"954afc94-f560-4761-8c60-3c6d62fba112"
+	],
+	"protocolProfileBehavior": {},
+	"folders": [
+		{
+			"id": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"name": "后台管理",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": null,
+			"order": [],
+			"folders_order": [
+				"6701d658-d874-4aef-970b-212995e508c1",
+				"4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+				"ced298d3-7a10-44c1-9f13-40222e0daa23",
+				"e232f617-8698-4153-8430-a7aaefb15ec8",
+				"58bee591-397e-44c4-8c19-7597535e8495"
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "3207c20f-ef05-42ef-baaf-ca96905b3272",
+			"name": "工具类",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": null,
+			"order": [
+				"9a9c5aeb-5dd6-467b-8dd3-bc0136836eeb",
+				"557586c7-7ce9-4bbb-b04b-1f31e5baea0f",
+				"aa836200-a362-406e-a825-963abaf980e9",
+				"6f7f85eb-9641-4fb3-b8d9-fda77e5e8055"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "f9c9fda6-1d72-4751-a4db-83f567541995",
+			"name": "微信官方授权步骤",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"order": [
+				"20308d11-6495-4e52-8680-9226ef600d1d",
+				"74a87ffc-72bb-442d-9cb5-bccf06069374",
+				"e76ac1ee-e6bd-424e-ad0d-e1cd053d32a4"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "7df0a8a9-bc76-4c4a-9213-454d5bacae10",
+			"name": "微博官方授权步骤",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"order": [
+				"f4baf990-95ee-41b4-9ff2-51803015f231",
+				"9cdca1f1-a70f-4c73-89ea-e7e0616a37bc",
+				"32d5f252-27d9-4de4-889a-a6cdcff1e7de"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"name": "权限",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"order": [
+				"d76cc5c2-d10b-4add-bf17-8250cac13e22",
+				"fcc291e0-3ffc-46e1-b0a1-9a3d5b5b4842",
+				"253cdc4b-42c1-4766-b11a-b5f5fab53a25",
+				"4e61d90f-a10b-41f3-93d0-5c115d8d6219",
+				"5df385e3-2425-43d2-8745-df1d563485ff",
+				"e9418f3a-6992-4e0f-be64-4e094efb9a4e",
+				"c29f2806-9bd4-4733-a275-0959ecb7a122"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"name": "用户",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": null,
+			"order": [
+				"d5ddfbb4-279c-4fcf-bb5d-5db0b0a35e98",
+				"ba82c335-caa0-4e4a-80ee-fc0856d01b75",
+				"6abd6cbd-c780-4ea9-99b2-bdd235ab1ef5",
+				"2458b108-e213-4b7d-9c34-2e94b54dbb64",
+				"f772578a-2564-4dd4-8fac-fb22660683f4",
+				"58a42718-745c-4d7c-aa9c-536ea1530b2a",
+				"37591972-5e17-42cd-a78b-8ec5efedbda7",
+				"8bcf39f1-f624-4620-bab4-a80305b02416",
+				"4631fee4-ddc4-4f47-a590-01c605fda8a0"
+			],
+			"folders_order": [
+				"f9c9fda6-1d72-4751-a4db-83f567541995",
+				"7df0a8a9-bc76-4c4a-9213-454d5bacae10"
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "6701d658-d874-4aef-970b-212995e508c1",
+			"name": "管理员",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"order": [
+				"0a3716f4-2ecb-433e-aab8-2e4c2f569f2c",
+				"1142d367-68f7-4064-9a9f-fed94673de19",
+				"30d33825-29ba-490a-b773-208058ee08b5",
+				"09ee2cd8-5a28-4c6a-aa22-c2496c403cb2",
+				"543cec2f-110c-411f-a932-c27dd8845c2b",
+				"f5f308f1-e985-45b6-9107-c1291f7b9261",
+				"e8453737-2bee-4ea7-b95c-2871bbec1b4e",
+				"30c247e6-72a4-4224-bf57-908a6af0a0e5",
+				"33252e3a-f808-4e62-b591-05182add79bf"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"name": "菜单",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"order": [
+				"fcb34746-524d-4990-a6ed-3f3bbecef753",
+				"fd3fcdc2-4d20-4fad-b9fc-9c2f5ad31e84",
+				"c6e06293-2dd6-4710-837b-2f1aab2eaaaf",
+				"6aa301db-42df-4487-8174-7a68ab9cf797",
+				"12f4b06d-7bd4-401a-ba15-8d93c2b14bf7"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"name": "角色",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"order": [
+				"7734ee70-d5cd-4908-ba33-9f56b748865c",
+				"17525524-5e3b-4c6f-beef-b444e7dda039",
+				"831dd46a-eec9-413d-9736-e177a0b4b7af",
+				"7b60a5fe-f758-4633-b933-1c1ae7a66b92",
+				"dc6dd4cc-0ab5-4eb2-ab96-c5da01c26e83",
+				"f9820b32-3114-41f0-99b3-1c3365f92e66",
+				"9129cfda-b1e1-4dc4-8b2c-ad8a3b7d92a6"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "58bee591-397e-44c4-8c19-7597535e8495",
+			"name": "设置",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "234ea759-8d60-4672-bbd5-b9ffd2c81f58",
+			"folder": "954afc94-f560-4761-8c60-3c6d62fba112",
+			"order": [
+				"d2d08ee2-a188-45f3-9a51-f54264de8607",
+				"0b2492aa-cc80-496a-a112-d96c1dc97e6c",
+				"3c822ea5-b544-4f83-9417-69868294f7a8",
+				"c1cbdc53-d27c-4ff4-a4df-5ed5eb394503"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"requests": [
+		{
+			"id": "09ee2cd8-5a28-4c6a-aa22-c2496c403cb2",
+			"name": "刷新 token 维持登录状态-api/admin/authorizations/current?debug=1",
+			"url": "{{laraapi}}api/admin/authorizations/current?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "0a3716f4-2ecb-433e-aab8-2e4c2f569f2c",
+			"name": "用户名/手机号/邮箱登录-api/admin/authorizations?debug=1",
+			"url": "{{laraapi}}api/admin/authorizations?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "account",
+					"value": "admins",
+					"description": "用户名/中国手机号/邮箱",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456789",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remember",
+					"value": "0",
+					"description": "是否开启「记住我」，如果开启了记住我，则 token 一星期后过期，不开，则 token有效期为 1 小时",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "0b2492aa-cc80-496a-a112-d96c1dc97e6c",
+			"name": "清空系统缓存-api/admin/clear_cache?debug=1",
+			"url": "{{laraapi}}api/admin/clear_cache?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "58bee591-397e-44c4-8c19-7597535e8495",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "1142d367-68f7-4064-9a9f-fed94673de19",
+			"name": "我的个人信息-api/admin/user?debug=1",
+			"url": "{{laraapi}}api/admin/user?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": null,
+			"headerData": [
+				{
+					"key": "",
+					"name": "Content-Type",
+					"value": "",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "//Content-Type: \n",
+			"pathVariables": {}
+		},
+		{
+			"id": "12f4b06d-7bd4-401a-ba15-8d93c2b14bf7",
+			"name": "单条删除菜单-api/admin/menus/:menu?debug=1",
+			"url": "{{laraapi}}api/admin/menus/:menu?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [
+				{
+					"key": "menu",
+					"value": "30"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"headers": "",
+			"pathVariables": {
+				"menu": "30"
+			}
+		},
+		{
+			"id": "17525524-5e3b-4c6f-beef-b444e7dda039",
+			"name": "创建角色显示页面-api/admin/roles/create?debug=1",
+			"url": "{{laraapi}}api/admin/roles/create?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "20308d11-6495-4e52-8680-9226ef600d1d",
+			"name": "第一步：跳转到授权页面获取code",
+			"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2cf682e0301fe6f3&redirect_uri=http://lara-sample-api.test/&response_type=code&scope=snsapi_userinfo&state=STATE",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "appid",
+					"value": "wx2cf682e0301fe6f3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "redirect_uri",
+					"value": "http://lara-sample-api.test/",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "response_type",
+					"value": "code",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "scope",
+					"value": "snsapi_userinfo",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "state",
+					"value": "STATE",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "doc",
+					"value": "https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html",
+					"description": "微信网页授权文档地址",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "f9c9fda6-1d72-4751-a4db-83f567541995",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "2458b108-e213-4b7d-9c34-2e94b54dbb64",
+			"name": "用户名/手机号/邮箱 登录-api/authorizations?debug=1",
+			"url": "{{laraapi}}api/authorizations?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "account",
+					"value": "15549328668",
+					"description": "用户名/中国手机号/邮箱",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456789",
+					"description": "密码",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remember",
+					"value": "0",
+					"description": "是否开启「记住我」，如果开启了记住我，则 token 一星期后过期，不开，则 token有效期为 1 小时",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "253cdc4b-42c1-4766-b11a-b5f5fab53a25",
+			"name": "创建权限数据提交-api/admin/permissions?debug=1",
+			"url": "{{laraapi}}api/admin/permissions?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "name56",
+					"description": "必填，权限标识，比如：manage_users",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "张三33",
+					"description": "必填，权限中文名称，比如：管理用户",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "roles[]",
+					"value": "1",
+					"description": "可选，角色 id 数组，新权限将直接赋给哪个角色",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "roles[]",
+					"value": "2",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "30c247e6-72a4-4224-bf57-908a6af0a0e5",
+			"name": "管理员列表-api/admin/users?debug=1",
+			"url": "{{laraapi}}api/admin/users?debug=1",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "s",
+					"value": "alex",
+					"description": "可选，关键字查询，支持：用户名、手机号、邮箱",
+					"enabled": false
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "可选，当前管理员状态，1=正常，0=禁用",
+					"enabled": false
+				},
+				{
+					"key": "begin",
+					"value": "2020-2-13 22:32:50",
+					"description": "可选，时间区间查询，开始时间",
+					"enabled": false
+				},
+				{
+					"key": "end",
+					"value": "2020-2-15 22:32:50",
+					"description": "可选，时间区间查询，结束时间",
+					"enabled": false
+				},
+				{
+					"key": "nopage",
+					"value": "0",
+					"description": "可选，不要分页，默认不要，设置为 0 或者 false，则表示要分页",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "3",
+					"description": "可选，当前页码数",
+					"enabled": false
+				},
+				{
+					"key": "per_page",
+					"value": "1",
+					"description": "可选，每页显示数量",
+					"enabled": false
+				},
+				{
+					"key": "order_by",
+					"value": "id,desc|name,asc",
+					"description": " 可选，排序规则",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "30d33825-29ba-490a-b773-208058ee08b5",
+			"name": "某个人的个人信息-api/admin/users/:user?debug=1",
+			"url": "{{laraapi}}api/admin/users/:user?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [
+				{
+					"key": "user",
+					"value": "1"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "",
+			"pathVariables": {
+				"user": "1"
+			}
+		},
+		{
+			"id": "32d5f252-27d9-4de4-889a-a6cdcff1e7de",
+			"name": "第三步：使用 access_token 获取用户信息",
+			"url": "https://api.weibo.com/2/users/show.json?access_token=2.00kpec8D0NekYj795283ec30b3qWJE&uid=3156573000",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "access_token",
+					"value": "2.00kpec8D0NekYj795283ec30b3qWJE",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uid",
+					"value": "3156573000",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "doc",
+					"value": "https://open.weibo.com/wiki/2/users/show",
+					"description": "获取用户信息文档地址",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "7df0a8a9-bc76-4c4a-9213-454d5bacae10",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "33252e3a-f808-4e62-b591-05182add79bf",
+			"name": "单条删除管理员-api/admin/users/:user?debug=1",
+			"url": "{{laraapi}}api/admin/users/:user?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [
+				{
+					"key": "user",
+					"value": "13",
+					"description": "用户id"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "",
+			"pathVariables": {
+				"user": "13"
+			}
+		},
+		{
+			"id": "37591972-5e17-42cd-a78b-8ec5efedbda7",
+			"name": "我的个人信息-api/user?debug=1",
+			"url": "{{laraapi}}api/user?debug=1",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "3c822ea5-b544-4f83-9417-69868294f7a8",
+			"name": "站点设置列表-api/admin/settings?debug=1",
+			"url": "{{laraapi}}api/admin/settings?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "58bee591-397e-44c4-8c19-7597535e8495",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "4631fee4-ddc4-4f47-a590-01c605fda8a0",
+			"name": "更新我的个人信息-api/user?debug=1",
+			"url": "{{laraapi}}api/user?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "alex",
+					"description": "选填，用户名",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "avatar_image_id",
+					"value": "1",
+					"description": "选填，头像id",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "phone",
+					"value": "15549328668",
+					"description": "选填，手机号",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "abcdt@qq.com",
+					"description": "选填，邮箱",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "current_password",
+					"value": "123456789",
+					"description": "当前密码（旧密码），可选（密码相关的字段一个出现时，其余两个都必须出现）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "new_password",
+					"value": "111111",
+					"description": "新密码，可选（密码相关的字段一个出现时，其余两个都必须出现）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "new_password_confirmation",
+					"value": "111111",
+					"description": "确认新密码，可选，（当有新密码时，为必填项）",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PATCH",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "4e61d90f-a10b-41f3-93d0-5c115d8d6219",
+			"name": "编辑权限显示页面-api/admin/permissions/:permission/edit?debug=1",
+			"url": "{{laraapi}}api/admin/permissions/:id/edit?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [
+				{
+					"key": "id",
+					"value": "1"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "",
+			"pathVariables": {
+				"id": "1"
+			}
+		},
+		{
+			"id": "543cec2f-110c-411f-a932-c27dd8845c2b",
+			"name": "删除 token （退出登录）api/admin/authorizations/current?debug=1",
+			"url": "{{laraapi}}api/admin/authorizations/current?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "557586c7-7ce9-4bbb-b04b-1f31e5baea0f",
+			"name": "管理员-图片上传-api/admin/images?debug=1",
+			"url": "{{laraapi}}api/admin/images?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "type",
+					"value": "avatar",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "image",
+					"value": "/C:/Users/Alex/Desktop/af37a04bf23ae40b3f8a9bfc7e78ad66ea2a03f8.jpg",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "3207c20f-ef05-42ef-baaf-ca96905b3272",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "58a42718-745c-4d7c-aa9c-536ea1530b2a",
+			"name": "删除 token（退出登录）api/authorizations/current?debug=1",
+			"url": "{{laraapi}}api/authorizations/current?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhLXNhbXBsZS1hcGkudGVzdFwvYXBpXC9hdXRob3JpemF0aW9ucyIsImlhdCI6MTU4MDk3NjQ3NiwiZXhwIjoxNTgwOTgwMDc2LCJuYmYiOjE1ODA5NzY0NzYsImp0aSI6IjdhNFQ0ejVDTUdNUEZ6ZVQiLCJzdWIiOjIsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.EYTL0Z35w8llX1ytWwhz17VzGPgo4vRgiqvTn__9GI0",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "5df385e3-2425-43d2-8745-df1d563485ff",
+			"name": "编辑权限数据提交-api/admin/permissions/:permission?debug=1",
+			"url": "{{laraapi}}api/admin/permissions/:permission?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "name1",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "2020测试",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PATCH",
+			"pathVariableData": [
+				{
+					"key": "permission",
+					"value": "4"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {
+				"permission": "4"
+			}
+		},
+		{
+			"id": "6aa301db-42df-4487-8174-7a68ab9cf797",
+			"name": "编辑菜单数据提交-api/admin/menus/:menu?debug=1",
+			"url": "{{laraapi}}api/admin/menus/:menu?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "route_name",
+					"value": "api.admin.menus.index",
+					"description": "必填，路由",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "接口菜单列表",
+					"description": "选填，路由中文名称",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "icon",
+					"value": "icon2323",
+					"description": "可选，菜单图标",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extra",
+					"value": "额外的信息",
+					"description": "可选，需要额外添加的信息",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "描述信息",
+					"description": "可选，菜单描述信息",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sort",
+					"value": "0",
+					"description": "可选，排序编号，默认为0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "可选，显示隐藏，1=显示，0=隐藏，默认为1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "1",
+					"description": "可选，路由类型，是前端路由，还是后端路由。1=后端，0=前端，默认为0",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permission[]",
+					"value": "manage_settings",
+					"description": " 可选，路由所受权限影响",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permission[]",
+					"value": "manage_settings88888",
+					"description": " 可选，路由所受权限影响",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PATCH",
+			"pathVariableData": [
+				{
+					"key": "menu",
+					"value": "1"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {
+				"menu": "1"
+			}
+		},
+		{
+			"id": "6abd6cbd-c780-4ea9-99b2-bdd235ab1ef5",
+			"name": "第三方授权登录-api/socials/:social_type/authorizations?debug=1",
+			"url": "{{laraapi}}api/socials/:social_type/authorizations?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "code",
+					"value": "86e8a7c8b3bccb32f82d76f8f4f858e3",
+					"description": "方式1、只传入code",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "2.00kpec8D0NekYj795283ec30b3qWJE",
+					"description": "方式2、前端需要同时提供access_token和openid",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "openid",
+					"value": "oHt9G1HJqhNFbXPUJKZMEVig_678",
+					"description": "方式2、前端需要同时提供access_token和openid",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [
+				{
+					"key": "social_type",
+					"value": "weibo",
+					"description": "第三方授权类型，目前暂时支持weixin、weibo"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {
+				"social_type": "weibo"
+			}
+		},
+		{
+			"id": "6f7f85eb-9641-4fb3-b8d9-fda77e5e8055",
+			"name": "抽奖（大转盘、九宫格、刮刮乐）api/prizes?debug=1",
+			"url": "{{laraapi}}api/prizes?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "3207c20f-ef05-42ef-baaf-ca96905b3272",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "74a87ffc-72bb-442d-9cb5-bccf06069374",
+			"name": "第二步：获取access_token 和openid",
+			"url": "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx2cf682e0301fe6f3&secret=f90977a8930cd39c3b785a47d61eadc2&code=0210ceqF1vPnS50iRZrF1rIeqF10ceqe&grant_type=authorization_code",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "appid",
+					"value": "wx2cf682e0301fe6f3",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "secret",
+					"value": "f90977a8930cd39c3b785a47d61eadc2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "code",
+					"value": "0210ceqF1vPnS50iRZrF1rIeqF10ceqe",
+					"equals": true,
+					"description": " 第一步回调后的一次性code",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "authorization_code",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "f9c9fda6-1d72-4751-a4db-83f567541995",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7734ee70-d5cd-4908-ba33-9f56b748865c",
+			"name": "角色列表-api/admin/roles?debug=1&nopage=0&page=1",
+			"url": "{{laraapi}}api/admin/roles?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "nopage",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "order_by",
+					"value": "id,desc|name,asc",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "per_page",
+					"value": "1",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "s",
+					"value": "普通",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7b60a5fe-f758-4633-b933-1c1ae7a66b92",
+			"name": "编辑角色显示页面-api/admin/roles/:role/edit?debug=1",
+			"url": "{{laraapi}}api/admin/roles/:role/edit?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [
+				{
+					"key": "role",
+					"value": "2"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {
+				"role": "2"
+			}
+		},
+		{
+			"id": "831dd46a-eec9-413d-9736-e177a0b4b7af",
+			"name": "创建角色数据提交-api/admin/roles?debug=1",
+			"url": "{{laraapi}}api/admin/roles?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "roles22",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "角色22",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permissions[]",
+					"value": "4",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permissions[]",
+					"value": "5",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permissions[]",
+					"value": "6",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "8bcf39f1-f624-4620-bab4-a80305b02416",
+			"name": "某个人的个人信息-api/users/:user?debug=1",
+			"url": "{{laraapi}}api/users/:user?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [
+				{
+					"key": "user",
+					"value": "1"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {
+				"user": "1"
+			}
+		},
+		{
+			"id": "9129cfda-b1e1-4dc4-8b2c-ad8a3b7d92a6",
+			"name": "批量删除角色-api/admin/roles_mass_destroy?debug=1&ids[]=4&ids[]=5",
+			"url": "{{laraapi}}api/admin/roles_mass_destroy?debug=1&ids[]=4&ids[]=5",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ids[]",
+					"value": "4",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ids[]",
+					"value": "5",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "9a9c5aeb-5dd6-467b-8dd3-bc0136836eeb",
+			"name": "用户-图片上传-api/images?debug=1",
+			"url": "{{laraapi}}api/images?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "type",
+					"value": "avatar",
+					"description": "上传图片类型，比如：头像=avatar",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "image",
+					"value": "/C:/Users/Alex/Desktop/af37a04bf23ae40b3f8a9bfc7e78ad66ea2a03f8.jpg",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "3207c20f-ef05-42ef-baaf-ca96905b3272",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "9cdca1f1-a70f-4c73-89ea-e7e0616a37bc",
+			"name": "第二步：获取 access_token 和 uid",
+			"url": "https://api.weibo.com/oauth2/access_token?client_id=673217589&client_secret=7f8adec228b06ba3896047c7bae46a9e&grant_type=authorization_code&redirect_uri=http://lara-sample-api.test&code=65946ec6180832ee8daf9435d283f97b",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "client_id",
+					"value": "673217589",
+					"equals": true,
+					"description": "必填，字符串，申请应用时分配的AppKey",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "7f8adec228b06ba3896047c7bae46a9e",
+					"equals": true,
+					"description": "必填，字符串，申请应用时分配的AppSecret",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "authorization_code",
+					"equals": true,
+					"description": "必填，字符串，请求的类型，填写authorization_code",
+					"enabled": true
+				},
+				{
+					"key": "redirect_uri",
+					"value": "http://lara-sample-api.test",
+					"equals": true,
+					"description": "必填，字符串，回调地址，需需与注册应用里的回调地址一致（grant_type为authorization_code时）",
+					"enabled": true
+				},
+				{
+					"key": "code",
+					"value": "65946ec6180832ee8daf9435d283f97b",
+					"equals": true,
+					"description": "必填，字符串，调用授权页面时获得的code值（grant_type为authorization_code时）",
+					"enabled": true
+				},
+				{
+					"key": "doc",
+					"value": "https://open.weibo.com/wiki/Oauth2/access_token",
+					"description": "获取 access_token 文档地址",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "7df0a8a9-bc76-4c4a-9213-454d5bacae10",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "aa836200-a362-406e-a825-963abaf980e9",
+			"name": "管理员-抽奖测试-api/admin/prizes/probably?debug=1",
+			"url": "{{laraapi}}api/admin/prizes/probably?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "times",
+					"value": "50",
+					"description": "预计模拟抽奖多少次，默认为 10000 次",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "3207c20f-ef05-42ef-baaf-ca96905b3272",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "ba82c335-caa0-4e4a-80ee-fc0856d01b75",
+			"name": "获取图片验证码-api/captchas",
+			"url": "{{laraapi}}api/captchas?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c1cbdc53-d27c-4ff4-a4df-5ed5eb394503",
+			"name": "更新站点设置-api/admin/settings/update?debug=1",
+			"url": "{{laraapi}}api/admin/settings/update?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "settiings[site_name]",
+					"value": "i am site_name",
+					"description": "可选，站点名称",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "settiings[website]",
+					"value": "i am websiteyyy",
+					"description": "可选，网站地址",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "settiings[record_n_varchar]",
+					"value": "record_n_varcharttttttttt",
+					"description": "可选，备案号",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "settiings[contact_email]",
+					"value": "788",
+					"description": "可选，联系邮箱",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "settiings[seo_description]",
+					"value": "999",
+					"description": "可选，seo 描述信息",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "settiings[seo_keyword]",
+					"value": "33",
+					"description": "可选，seo 关键词",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}"
+					}
+				]
+			},
+			"events": null,
+			"folder": "58bee591-397e-44c4-8c19-7597535e8495",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "c29f2806-9bd4-4733-a275-0959ecb7a122",
+			"name": "批量删除权限-api/admin/permissions_mass_destroy?debug=1&ids[]=22&ids[]=7&raw=1&ids[]=8",
+			"url": "{{laraapi}}api/admin/permissions_mass_destroy?debug=1&ids[]=22&ids[]=7&raw=1&ids[]=8",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ids[]",
+					"value": "22",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ids[]",
+					"value": "1",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "ids[]",
+					"value": "2",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "ids[]",
+					"value": "7",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ids[]",
+					"value": "8",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c6e06293-2dd6-4710-837b-2f1aab2eaaaf",
+			"name": "编辑菜单显示页面-api/admin/menus/:menu/edit?debug=1",
+			"url": "{{laraapi}}api/admin/menus/:menu/edit?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [
+				{
+					"key": "menu",
+					"value": "2"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"headers": "",
+			"pathVariables": {
+				"menu": "2"
+			}
+		},
+		{
+			"id": "d2d08ee2-a188-45f3-9a51-f54264de8607",
+			"name": "用户操作日志-api/admin/logs?debug=1&nopage=0",
+			"url": "{{laraapi}}api/admin/logs?debug=1",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "nopage",
+					"value": "0",
+					"equals": true,
+					"description": "可选，是否开启分页，默认不分页，需要开启则传 false 或者 0",
+					"enabled": false
+				},
+				{
+					"key": "s",
+					"value": "修改",
+					"description": "可选，模糊查询，支持：用户名、手机号、邮箱、访问者ip、描述信息",
+					"enabled": false
+				},
+				{
+					"key": "guard_name",
+					"value": "admin",
+					"description": "可选，前端用户操作日志，还是后端操作日志，admin=后端，api=前端，默认全部显示",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "3",
+					"description": "可选，当前页码数",
+					"enabled": false
+				},
+				{
+					"key": "per_page",
+					"value": "7",
+					"description": "可选，每页显示数量",
+					"enabled": false
+				},
+				{
+					"key": "order_by",
+					"value": "id,desc|created_at,asc",
+					"description": " 可选，排序规则",
+					"enabled": false
+				},
+				{
+					"key": "begin",
+					"value": "2020-2-13 22:32:50",
+					"description": "可选，时间区间查询，开始时间",
+					"enabled": false
+				},
+				{
+					"key": "end",
+					"value": "2020-2-15 22:32:50",
+					"description": "可选，时间区间查询，结束时间",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "58bee591-397e-44c4-8c19-7597535e8495",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d5ddfbb4-279c-4fcf-bb5d-5db0b0a35e98",
+			"name": "注册用户-api/register",
+			"url": "{{laraapi}}api/register?debug=1&raw=1",
+			"description": "",
+			"data": [
+				{
+					"key": "account",
+					"value": "abc123",
+					"description": "账号，支持用户名「 /^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/ 」、中国手机号、邮箱三种账号方式",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123456789",
+					"description": "密码，不小于8位字符串",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123456789",
+					"description": "确认密码",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "captcha_key",
+					"value": "captcha-NTlG4zWMJTojNPM",
+					"description": "图片验证码的缓存随机 key",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "captcha_code",
+					"value": "yzafg",
+					"description": "图片验证码（不区分大小写）",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "Accept: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d76cc5c2-d10b-4add-bf17-8250cac13e22",
+			"name": "权限列表-api/admin/permissions?debug=1",
+			"url": "{{laraapi}}api/admin/permissions?debug=1",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "s",
+					"value": "站点",
+					"description": "可选，模糊搜索",
+					"enabled": false
+				},
+				{
+					"key": "begin",
+					"value": "2020-2-13 22:32:50",
+					"description": "可选，时间区间查询，开始时间",
+					"enabled": false
+				},
+				{
+					"key": "end",
+					"value": "2020-2-15 22:32:50",
+					"description": "可选，时间区间查询，结束时间",
+					"enabled": false
+				},
+				{
+					"key": "per_page",
+					"value": "1",
+					"description": "如果开启分页，则这里为每页显示数量",
+					"enabled": false
+				},
+				{
+					"key": "nopage",
+					"value": "0",
+					"description": "可选，是否开启分页，默认不分页，需要开启则传 false 或者 0",
+					"enabled": false
+				},
+				{
+					"key": "order_by",
+					"value": "id,desc|name,asc",
+					"description": " 可选，排序规则",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "2",
+					"description": " 当前页码数",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"rawModeData": "",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "dc6dd4cc-0ab5-4eb2-ab96-c5da01c26e83",
+			"name": "编辑角色数据提交api/admin/roles/:role?debug=1",
+			"url": "{{laraapi}}api/admin/roles/:role?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "roles22",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "测试内容",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permissions[]",
+					"value": "5",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permissions[]",
+					"value": "4",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PATCH",
+			"pathVariableData": [
+				{
+					"key": "role",
+					"value": "7"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {
+				"role": "7"
+			}
+		},
+		{
+			"id": "e76ac1ee-e6bd-424e-ad0d-e1cd053d32a4",
+			"name": "第三步：使用access_token和openid换取微信用户信息",
+			"url": "https://api.weixin.qq.com/sns/userinfo?access_token=30_Z6XiFNcrGX7LnSJmI4FI2LANEpDeoqr_ArrhOr7p2heNaybiVhApd86vClecF1AG160KMELw6A3NWmvNFRQX4A&openid=oHt9G1HJqhNFbXPUJKZMEVig_678&lang=zh_CN",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "access_token",
+					"value": "30_Z6XiFNcrGX7LnSJmI4FI2LANEpDeoqr_ArrhOr7p2heNaybiVhApd86vClecF1AG160KMELw6A3NWmvNFRQX4A",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "openid",
+					"value": "oHt9G1HJqhNFbXPUJKZMEVig_678",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "lang",
+					"value": "zh_CN",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "f9c9fda6-1d72-4751-a4db-83f567541995",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "e8453737-2bee-4ea7-b95c-2871bbec1b4e",
+			"name": "添加新管理员-api/admin/users?debug=1",
+			"url": "{{laraapi}}api/admin/users?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "name",
+					"value": "alextt",
+					"description": "姓名、邮箱、手机号、必须三个选一个",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "admin@qq",
+					"description": "姓名、邮箱、手机号、必须三个选一个",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "phone",
+					"value": "18502728041",
+					"description": "姓名、邮箱、手机号、必须三个选一个",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "password",
+					"value": "123456",
+					"description": "必填，密码",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "123456",
+					"description": "必填，确认密码",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "roles[]",
+					"value": "Maintainer",
+					"description": "可选，角色1",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "roles[]",
+					"value": "roles1",
+					"description": "可选，角色2",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "avatar_image_id",
+					"value": "2",
+					"description": "可选，头像id（需要先上传头像）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "可选，用户状态，1=正常，0=禁用",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "e9418f3a-6992-4e0f-be64-4e094efb9a4e",
+			"name": "单条删除权限-api/admin/permissions/:permission?debug=1",
+			"url": "{{laraapi}}api/admin/permissions/:permission?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [
+				{
+					"key": "permission",
+					"value": "9"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "",
+			"pathVariables": {
+				"permission": "9"
+			}
+		},
+		{
+			"id": "f4baf990-95ee-41b4-9ff2-51803015f231",
+			"name": "第一步：跳转到授权页面获取code",
+			"url": "https://api.weibo.com/oauth2/authorize?client_id=673217589&response_type=code&redirect_uri=http://lara-sample-api.test",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "client_id",
+					"value": "673217589",
+					"equals": true,
+					"description": "必填，字符串，申请应用时分配的AppKey",
+					"enabled": true
+				},
+				{
+					"key": "response_type",
+					"value": "code",
+					"equals": true,
+					"description": "选填，字符串，申请scope权限所需参数",
+					"enabled": true
+				},
+				{
+					"key": "redirect_uri",
+					"value": "http://lara-sample-api.test",
+					"equals": true,
+					"description": "必填，字符串，授权回调地址，站外应用需与设置的回调地址一致，站内应用需填写canvas page的地址",
+					"enabled": true
+				},
+				{
+					"key": "doc_url",
+					"value": "https://open.weibo.com/wiki/Oauth2/authorize",
+					"description": "授权页面文档地址，get/post",
+					"enabled": false
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": "7df0a8a9-bc76-4c4a-9213-454d5bacae10",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f5f308f1-e985-45b6-9107-c1291f7b9261",
+			"name": "更新某个管理员个人信息-api/admin/user?debug=1",
+			"url": "{{laraapi}}api/admin/users/:user?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "current_password",
+					"value": "123456789",
+					"description": "当前密码（旧密码），可选（密码相关的字段一个出现时，其余两个都必须出现）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "new_password",
+					"value": "123456789",
+					"description": "新密码，可选（密码相关的字段一个出现时，其余两个都必须出现）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "new_password_confirmation",
+					"value": "123456789",
+					"description": "确认新密码，可选，（当有新密码时，为必填项）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "avatar_image_id",
+					"value": "2",
+					"description": "头像id，可选（需要先上传头像之后拿到头像id）",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "name",
+					"value": "admin",
+					"description": "用户名，可选",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "phone",
+					"value": "18502728040",
+					"description": "手机号，可选",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "email",
+					"value": "admin@admin.com",
+					"description": "邮箱，可选",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "roles[]",
+					"value": "Maintainer",
+					"description": "角色标识1，可选",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "roles[]",
+					"value": "roles1",
+					"description": "角色标识2，可选",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "当前用户状态，1=正常，0=禁用，可选",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "urlencoded",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"type": "text"
+				}
+			],
+			"method": "PATCH",
+			"pathVariableData": [
+				{
+					"key": "user",
+					"value": "13"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "raw",
+					"value": "1",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "6701d658-d874-4aef-970b-212995e508c1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"pathVariables": {
+				"user": "13"
+			}
+		},
+		{
+			"id": "f772578a-2564-4dd4-8fac-fb22660683f4",
+			"name": "刷新token 维持登录状态-api/authorizations/current?debug=1",
+			"url": "{{laraapi}}api/authorizations/current?debug=1",
+			"description": "需要携带 token",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhLXNhbXBsZS1hcGkudGVzdFwvYXBpXC9hdXRob3JpemF0aW9ucyIsImlhdCI6MTU4MDk3NjQ3NiwiZXhwIjoxNTgwOTgwMDc2LCJuYmYiOjE1ODA5NzY0NzYsImp0aSI6IjdhNFQ0ejVDTUdNUEZ6ZVQiLCJzdWIiOjIsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.EYTL0Z35w8llX1ytWwhz17VzGPgo4vRgiqvTn__9GI0",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "23722dc3-d62d-45a3-8a6b-dce21847b073",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "f9820b32-3114-41f0-99b3-1c3365f92e66",
+			"name": "单条删除角色-api/admin/roles/:role?debug=1",
+			"url": "{{laraapi}}api/admin/roles/:role?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "DELETE",
+			"pathVariableData": [
+				{
+					"key": "role",
+					"value": "2"
+				}
+			],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "ced298d3-7a10-44c1-9f13-40222e0daa23",
+			"headers": "",
+			"pathVariables": {
+				"role": "2"
+			}
+		},
+		{
+			"id": "fcb34746-524d-4990-a6ed-3f3bbecef753",
+			"name": " 菜单路由列表-api/admin/menus?debug=1",
+			"url": "{{laraapi}}api/admin/menus?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "s",
+					"value": "admin.permissions.store",
+					"description": "模糊查询，支持：路由名称，路由中文名称，权限",
+					"enabled": false
+				},
+				{
+					"key": "begin",
+					"value": "2020-2-13 22:32:50",
+					"description": "可选，时间区间查询，开始时间",
+					"enabled": false
+				},
+				{
+					"key": "end",
+					"value": "2020-2-15 22:32:50",
+					"description": "可选，时间区间查询，结束时间",
+					"enabled": false
+				},
+				{
+					"key": "nopage",
+					"value": "0",
+					"description": "可选，不要分页，默认不要，设置为 0 或者 false，则表示要分页",
+					"enabled": false
+				},
+				{
+					"key": "page",
+					"value": "2",
+					"description": "可选，当前页码数",
+					"enabled": false
+				},
+				{
+					"key": "per_page",
+					"value": "3",
+					"description": "可选，每页显示数量",
+					"enabled": false
+				},
+				{
+					"key": "order_by",
+					"value": "id,desc|sort,asc",
+					"description": " 可选，排序规则",
+					"enabled": false
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "可选，1=显示，0=隐藏，默认为显示",
+					"enabled": false
+				},
+				{
+					"key": "type",
+					"value": "0",
+					"description": "可选，1=后端路由，0=前端路由",
+					"enabled": false
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "fcc291e0-3ffc-46e1-b0a1-9a3d5b5b4842",
+			"name": "创建权限显示页面-api/admin/permissions/create?debug=1",
+			"url": "{{laraapi}}api/admin/permissions/create?debug=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "4befbdee-f1c9-4833-9be3-ab102a10fdc2",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "fd3fcdc2-4d20-4fad-b9fc-9c2f5ad31e84",
+			"name": "创建菜单数据提交-api/admin/menus?debug=1",
+			"url": "{{laraapi}}api/admin/menus?debug=1",
+			"description": "",
+			"data": [
+				{
+					"key": "route_name",
+					"value": "menus.index",
+					"description": "必填，路由",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cn_name",
+					"value": "路由列表",
+					"description": "选填，路由中文名称",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "permission[]",
+					"value": "manage_contents",
+					"description": " 可选，路由所受权限影响",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "icon",
+					"value": "icon001",
+					"description": "可选，菜单图标",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "extra",
+					"value": "随便测试",
+					"description": "可选，需要额外添加的信息",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "描述信息",
+					"description": "可选，菜单描述信息",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sort",
+					"value": "0",
+					"description": "可选，排序编号，默认为0",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "state",
+					"value": "1",
+					"description": "可选，显示隐藏，1=显示，0=隐藏，默认为1",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "type",
+					"value": "0",
+					"description": "可选，路由类型，是前端路由，还是后端路由。1=后端，0=前端，默认为0",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "permission[]",
+					"value": "namettttt",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataOptions": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "debug",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin-user1}}",
+						"type": "string"
+					}
+				]
+			},
+			"events": null,
+			"folder": "e232f617-8698-4153-8430-a7aaefb15ec8",
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
