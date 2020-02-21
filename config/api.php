@@ -31,13 +31,15 @@ return [
     */
     'cache_key' => [
         // 缓存过期时间为 24 小时
-        'cache_expire' => 1440 * 60,
+        'cache_expire' => 24 * 60 * 60,
         // 图片验证码的缓存 key
         'captcha' => 'captcha-',
         // 短信验证码的缓存 key
         'verificationCode' => 'verificationCode_',
         // 站点设置的缓存 key
-        'site' => 'site'
+        'site' => 'site',
+        // 企业微信缓存 access_token 的 key
+        'qywx_access_token' => 'qywx_access_token'
     ],
 
     /*
@@ -58,6 +60,20 @@ return [
     |
     */
     'default_guard_name' => 'admin',
+
+    /*
+    |--------------------------------------------------------------------------
+    | 社会化登录相关配置
+    |--------------------------------------------------------------------------
+    |
+    */
+    'social_auth' => [
+        'qyweixin' => [
+            'corpid' => env('QY_WEIXIN_CORPID'),  // 企业ID
+            'corpsecret' => env('QY_WEIXIN_CORPSECRET'),  // 应用的凭证密钥
+            'agentid' => env('QY_WEIXIN_AGENTID'),  // 企业应用的id
+        ]
+    ],
 
 
 ];

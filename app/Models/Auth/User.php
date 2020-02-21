@@ -14,6 +14,7 @@ class User extends Authenticatable implements JWTSubject
     const NORMAL_LOGIN = 0;
     const SOCIAL_WEIXIN = 1;
     const SOCIAL_WEIBO = 2;
+    const SOCIAL_QYWEIXIN = 3;
 
     /**
      * 登录方式（全部为小写）
@@ -24,6 +25,7 @@ class User extends Authenticatable implements JWTSubject
         self::NORMAL_LOGIN => 'normal',
         self::SOCIAL_WEIXIN => 'weixin',
         self::SOCIAL_WEIBO => 'weibo',
+        self::SOCIAL_QYWEIXIN => 'qyweixin',
     ];
 
     /**

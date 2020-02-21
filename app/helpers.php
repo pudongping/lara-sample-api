@@ -214,3 +214,21 @@ if (! function_exists('batchUpdate')) {
         return \DB::update($tblSql, $building);
     }
 }
+
+if (! function_exists('http_get')) {
+    /**
+     * HTTP Get 请求数据
+     *
+     * @param $api  string  需要请求的 url
+     * @param $query  array  请求参数数组
+     * @return mixed
+     */
+    function http_get($api, $args)
+    {
+        $client = new \GuzzleHttp\Client;
+        $query = http_build_query($args);
+        $response = $client->get($api . '?' . $query);
+        $result = json_decode($response->getBody(), true);
+        return $result;
+    }
+}

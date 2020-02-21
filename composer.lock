@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5741357840c8a0211d91c0c6ce30686c",
+    "content-hash": "f5844f40944e4e3b65951350b9a9cb83",
     "packages": [
         {
             "name": "cyvelnet/laravel5-fractal",
