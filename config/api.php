@@ -34,6 +34,8 @@ return [
         'cache_expire' => 1440 * 60,
         // 图片验证码的缓存 key
         'captcha' => 'captcha-',
+        // 短信验证码的缓存 key
+        'verificationCode' => 'verificationCode_',
         // 站点设置的缓存 key
         'site' => 'site'
     ],
