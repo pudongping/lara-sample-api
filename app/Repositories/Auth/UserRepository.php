@@ -74,7 +74,7 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * 第三方授权登录
+     * 第三方授权登录（授权在服务端，需要客户端传 code 或者 openid 的情况）
      *
      * @param $request
      * @return array|bool
