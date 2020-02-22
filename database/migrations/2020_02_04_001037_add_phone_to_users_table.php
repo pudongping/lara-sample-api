@@ -17,6 +17,8 @@ class AddPhoneToUsersTable extends Migration
             $table->string('phone', 40)->nullable()->unique()->after('name')->comment('手机号码');
             $table->string('email', 80)->nullable()->change();
             $table->string('name', 80)->nullable()->change();
+            $table->string('password')->nullable()->change();
+            $table->string('avatar')->default('')->after('email')->comment('自定义头像');
         });
     }
 
@@ -31,6 +33,8 @@ class AddPhoneToUsersTable extends Migration
             $table->dropColumn('phone');
             $table->string('email')->nullable(false)->change();
             $table->string('name')->nullable(false)->change();
+            $table->string('password')->nullable(false)->change();
+            $table->dropColumn('avatar');
         });
     }
 }

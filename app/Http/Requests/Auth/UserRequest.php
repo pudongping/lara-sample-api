@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\Request;
-use App\Models\Auth\User;
+use App\Models\Auth\SocialUser;
 use Illuminate\Validation\Rule;
 
 class UserRequest extends Request
@@ -19,19 +19,32 @@ class UserRequest extends Request
         $userId = auth('api')->id();
 
         $rules = [
-            'register' => [
-                'account' => 'required|between:4,40',
-                'password' => ['required', 'string', 'min:6', 'confirmed'],  // password_confirmation
+            'checkRegister' => [
+                'phone'=>[
+                    'required',
+                    'regex:/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199)\d{8}$/',
+                    Rule::unique('users')->ignore($userId),
+                ],
+                'password' => ['required', 'string', 'min:6'],
                 'captcha_key' => 'required|string',
                 'captcha_code' => 'required|string',
+            ],
+            'register' => [
+                'register_key' => 'required|string',
+                'phone_code' => 'required|string',
+            ],
+            'checkBound' => [
+                'openid' => 'required|string',
+            ],
+            'socialLogin' => [
+                'openid' => 'required_without:social_user_key|string',
+                'social_user_key' => 'required_without:openid|string',
+                'phone_key' => 'required|string',
+                'phone_code' => 'required|string',
             ],
             'socialStore' => [
                 'code' => 'required_without:access_token|string',
                 'access_token' => 'required_without:code|string',
-            ],
-            'store' => [
-                'account' => 'required|between:4,40|string',
-                'password' => ['required', 'string', 'min:6']
             ],
             'update' => [
                 'name' => 'between:3,20|regex:/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/|unique:users,name,' .$userId,
@@ -50,10 +63,22 @@ class UserRequest extends Request
                 'current_password' => 'required_with:new_password|string|min:6',
                 'new_password' => 'required_with:current_password|string|min:6|confirmed',  // new_password_confirmation
             ],
+            'resetPwd' => [
+                'new_password' => 'required|string|min:6',
+                'phone_key' => 'required|string',
+                'phone_code' => 'required|string',
+            ],
+            'normalRegister' => [
+                'account' => 'required|between:4,40',
+                'password' => ['required', 'string', 'min:6', 'confirmed'],  // password_confirmation
+                'captcha_key' => 'required|string',
+                'captcha_code' => 'required|string',
+            ],
+
         ];
 
         // 微信授权登录的流程中换取用户信息的接口，需要同时提交 access_token 和 openid
-        if (User::$loginType[User::SOCIAL_WEIXIN] == $this->social_type && !$this->code) {
+        if (SocialUser::$loginType[SocialUser::SOCIAL_WEIXIN] == $this->social_type && !$this->code) {
             $rules['socialStore']['openid']  = 'required|string';
         }
 
@@ -65,7 +90,9 @@ class UserRequest extends Request
         return [
             'password' => '密码',
             'captcha_key' => '图片验证码的 key',
+            'register_key' => '注册 key',
             'captcha_code' => '图片验证码',
+            'phone_code' => '短信验证码',
             'name' => '用户名',
             'email' => '邮箱',
             'phone' => '手机号',

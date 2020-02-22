@@ -6,27 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\Auth\SocialUser;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-
-    const NORMAL_LOGIN = 0;
-    const SOCIAL_WEIXIN = 1;
-    const SOCIAL_WEIBO = 2;
-    const SOCIAL_QYWEIXIN = 3;
-
-    /**
-     * 登录方式（全部为小写）
-     *
-     * @var array
-     */
-    public static $loginType = [
-        self::NORMAL_LOGIN => 'normal',
-        self::SOCIAL_WEIXIN => 'weixin',
-        self::SOCIAL_WEIBO => 'weibo',
-        self::SOCIAL_QYWEIXIN => 'qyweixin',
-    ];
 
     /**
      * The attributes that are mass assignable.
@@ -34,8 +18,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password',  'bound_id', 'social_type', 'openid',
-        'unionid', 'nickname', 'sex', 'language', 'city', 'province', 'country', 'avatar', 'headimgurl',
+        'name', 'email', 'phone', 'password',  'avatar'
     ];
 
     /**
@@ -76,14 +59,19 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function getSocialTypeAttribute($value)
-    {
-        return static::$loginType[$value] ?? static::$loginType[static::NORMAL_LOGIN];
-    }
-
     public function getAvatarAttribute($value)
     {
         return !empty($value) ? config('app.url') . $value : '';
+    }
+
+    /**
+     * 一个用户允许多种第三方授权登录
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function socialUsers()
+    {
+        return $this->hasMany(SocialUser::class, 'user_id', 'id');
     }
 
 }

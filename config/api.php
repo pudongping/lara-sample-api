@@ -34,6 +34,10 @@ return [
         'cache_expire' => 24 * 60 * 60,
         // 图片验证码的缓存 key
         'captcha' => 'captcha-',
+        // 检验注册字段的缓存 key
+        'checkRegister' => 'checkRegister-',
+        // 第三方登录在服务端没有绑定手机号时的缓存 key
+        'social_user' => 'social_user-',
         // 短信验证码的缓存 key
         'verificationCode' => 'verificationCode_',
         // 站点设置的缓存 key

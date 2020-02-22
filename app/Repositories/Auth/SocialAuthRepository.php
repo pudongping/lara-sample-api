@@ -24,10 +24,14 @@ class SocialAuthRepository
      */
     public function qywxUser($code)
     {
-        $accessToken = $this->getAccessToken();
-        $userId = $this->getUserId($accessToken, $code);
-        $fullUserInfo = $this->getUserInfo($accessToken, $userId);
-        return $this->simplyUserInfo($fullUserInfo);
+        try {
+            $accessToken = $this->getAccessToken();
+            $userId = $this->getUserId($accessToken, $code);
+            $fullUserInfo = $this->getUserInfo($accessToken, $userId);
+            return $this->simplyUserInfo($fullUserInfo);
+        } catch (\Exception $exception) {
+            throw new ApiException(Code::ERR_PARAMS, ['参数错误，未获取用户信息']);
+        }
     }
 
     /**
@@ -125,12 +129,12 @@ class SocialAuthRepository
     public function simplyUserInfo($fullUserInfo)
     {
         return [
-            'id' => $fullUserInfo['userid'],
+            'openid' => $fullUserInfo['userid'],  // 当前授权的唯一标识
             'name' => $fullUserInfo['name'],
             'phone' => $fullUserInfo['mobile'],
-            'gender' => $fullUserInfo['gender'],
+            'sex' => $fullUserInfo['gender'],
             'email' => $fullUserInfo['email'],
-            'avatar' => $fullUserInfo['avatar'],
+            'headimgurl' => $fullUserInfo['avatar'],
             'department' => $fullUserInfo['department'],
             'position' => $fullUserInfo['position'],
         ];

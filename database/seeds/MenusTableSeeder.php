@@ -21,25 +21,20 @@ class MenusTableSeeder extends Seeder
         // 所有的路由
         $allRoutes = array_values($routes);
 
-        $state = array_keys(Menu::$state);
-
         // 获取 Faker 实例
         $faker = app(Faker\Generator::class);
 
         $menus = factory(Menu::class)
-            ->times(50)
+            ->times(5)
             ->make()
             ->each(function (
                 $menu,
                 $index
             ) use (
                 $faker,
-                $allRoutes,
-                $state
+                $allRoutes
             ) {
                 // 从数组中随机取出一个并赋值
-                $menu->state = $faker->randomElement($state);
-                $menu->type = $faker->randomElement($state);
                 $menu->route_name = $faker->randomElement($allRoutes);
             });
 

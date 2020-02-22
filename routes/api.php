@@ -22,16 +22,28 @@ Route::group([
     'middleware' => ['throttle:' . config('api.rate_limits.sign')],  // 1分钟/10次
     'as' => 'api.'
 ], function () {
+    // 普通注册方式
     // 图片验证码
     Route::post('captchas', 'Auth\CaptchasController@store')->name('captchas.store');
-    // 短信验证码
-    Route::post('verificationCodes', 'Auth\VerificationCodesController@store')->name('verificationCodes.store');
+    // 验证注册字段合法性
+    Route::post('checkRegister', 'Auth\UsersController@checkRegister')->name('users.checkRegister');
     // 用户注册
     Route::post('register', 'Auth\UsersController@register')->name('users.register');
+
+    // 第三方登录注册方式
+    // 检验第三方登录是否已经绑定了手机号
+    Route::post('checkBoundPhone/{social_type}', 'Auth\UsersController@checkBoundPhone')->name('users.checkBoundPhone');
+    // 第三方登录（直接采用 openid 登录，前端已授权）
+    Route::post('socials/{social_type}/login', 'Auth\UsersController@socialLogin')->name('socials.socialLogin');
+    // 第三方登录（后端授权）
+    Route::post('socials/{social_type}/authorizations', 'Auth\UsersController@socialStore')->name('socials.authorizations.store');
     // 用户名/邮箱/手机号/登录
     Route::post('authorizations', 'Auth\UsersController@login')->name('authorizations.login');
-    // 第三方登录
-    Route::post('socials/{social_type}/authorizations', 'Auth\UsersController@socialStore')->name('socials.authorizations.store');
+    // 找回密码
+    Route::patch('resetPwd', 'Auth\UsersController@resetPwd')->name('users.resetPwd');
+    // 短信验证码
+    Route::post('verificationCodes', 'Auth\VerificationCodesController@store')->name('verificationCodes.store');
+
 });
 
 Route::group([
@@ -40,6 +52,7 @@ Route::group([
 ], function () {
 
     // 不需要登录就可以访问的
+    Route::get('tests', 'Api\ApiTestsController@index')->name('tests.index');
     // 某个用户的详情
     Route::get('users/{user}', 'Auth\UsersController@show')->name('users.show');
 
@@ -59,8 +72,6 @@ Route::group([
         // 抽奖
         Route::get('prizes', 'Common\PrizesController@lottery')->name('prizes.lottery');
 
-
-        Route::get('tests', 'Api\ApiTestsController@index')->name('tests.index');
 
 
     });

@@ -35,7 +35,7 @@ class CaptchasController extends Controller
         $captcha = $captchaBuilder->build();
         $expiredAt = now()->addMinute(2);
         // 缓存 5 个字节的图片验证码，不区分大小写
-        \Cache::put($key, ['code' => strtolower($captcha->getPhrase())], $expiredAt);
+        \Cache::put($key, ['captcha_code' => strtolower($captcha->getPhrase())], $expiredAt);
         $result = [
             'captcha_key' => $key,
             'expired_at' => $expiredAt->toDateTimeString(),

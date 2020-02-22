@@ -35,39 +35,53 @@ class VerificationCodesController extends Controller
      * @throws ApiException
      * @throws \Overtrue\EasySms\Exceptions\InvalidArgumentException
      */
-    public function store(VerificationCodeRequest $request, EasySms $easySms)
+    public function store(VerificationCodeRequest $request)
     {
         $phone = $request->phone;
 
-        if (app()->environment('production')) {
-            // 生成 6 位随机数，左侧补 0
-            $code = str_pad(random_int(1, 999999), 6, 0, STR_PAD_LEFT);
-            try {
-                $easySms->send($phone, [
-                    'template' => config('easysms.gateways.aliyun.templates.register'),
-                    'data' => [
-                        'code' => $code
-                    ],
-                ]);
-            } catch (NoGatewayAvailableException $exception) {
-                $message = $exception->getException('aliyun')->getMessage();
-                throw new ApiException(Code::ERR_HTTP_INTERNAL_SERVER_ERROR, [], $message);
-            }
-        } else {
-            $code = '123456';
-        }
+        $code = $this->sendSms($phone);
 
         $key = config('api.cache_key.verificationCode') . \Str::random(15);
         $expiredAt = now()->addMinutes(5);
         // 缓存验证码 5 分钟过期
-        \Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
+        \Cache::put($key, ['phone' => $phone, 'phone_code' => $code], $expiredAt);
 
         $result = [
-            'key' => $key,
+            'phone_key' => $key,
             'expired_at' => $expiredAt->toDateTimeString(),
         ];
 
         return $this->response->send($result);
+    }
+
+    /**
+     * 发送短信验证码
+     *
+     * @param $phone  手机号码
+     * @return string  验证码
+     * @throws ApiException
+     */
+    public function sendSms($phone)
+    {
+        if (!app()->environment('production')) {
+            return '123456';
+        }
+
+        // 生成 6 位随机数，左侧补 0
+        $code = str_pad(random_int(1, 999999), 6, 0, STR_PAD_LEFT);
+        try {
+            app('easysms')->send($phone, [
+                'template' => config('easysms.gateways.aliyun.templates.register'),
+                'data' => [
+                    'code' => $code
+                ],
+            ]);
+        } catch (NoGatewayAvailableException $exception) {
+            $message = $exception->getException('aliyun')->getMessage();
+            throw new ApiException(Code::ERR_HTTP_INTERNAL_SERVER_ERROR, [], $message);
+        }
+
+        return $code;
     }
 
 }
