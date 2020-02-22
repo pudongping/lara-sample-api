@@ -74,4 +74,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(SocialUser::class, 'user_id', 'id');
     }
 
+    /**
+     * 一个用户允许有多个收货地址
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class, 'user_id', 'id');
+    }
+
 }

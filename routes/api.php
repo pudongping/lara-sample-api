@@ -68,6 +68,17 @@ Route::group([
         // 绑定第三方授权账号（客户端直接提供 openid）
         Route::patch('user/{social_type}/bound', 'Auth\UsersController@boundSocial')->name('user.boundSocial');
 
+        // 收获地址
+        Route::get('userAddresses', 'Auth\UserAddressesController@index')->name('userAddresses.index');
+        // 创建收获地址
+        Route::post('userAddresses', 'Auth\UserAddressesController@store')->name('userAddresses.store');
+        // 编辑收货地址-显示数据
+        Route::get('userAddresses/{user_address}/edit', 'Auth\UserAddressesController@edit')->name('userAddresses.edit');
+        // 编辑收获地址-数据提交
+        Route::put('userAddresses/{user_address}', 'Auth\UserAddressesController@update')->name('userAddresses.update');
+        // 删除收货地址
+        Route::delete('userAddresses/{user_address}', 'Auth\UserAddressesController@destroy')->name('userAddresses.destroy');
+
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 抽奖
