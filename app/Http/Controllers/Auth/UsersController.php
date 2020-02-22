@@ -146,6 +146,18 @@ class UsersController extends Controller
     }
 
     /**
+     * 已经登录的用户提供 openid 绑定第三方授权账号
+     *
+     * @param UserRequest $request
+     * @return mixed
+     */
+    public function boundSocial(UserRequest $request)
+    {
+        $data = $this->userRepository->boundSocial($request);
+        return $this->response->send($data);
+    }
+
+    /**
      * 重置密码
      *
      * @param UserRequest $request

@@ -191,7 +191,7 @@ class UserRepository extends BaseRepository
             return false;
         }
 
-        // 此时为第三方登录在，服务端授权时。直接传 openid 为服务端已经授权完毕了
+        // 此时为第三方登录在 服务端授权时。如果直接传 openid 给服务端则表示前端已经授权完毕了
         $socialUserId = null;
         if ($request->social_user_key || is_null($request->openid)) {
             $socialUserData = cache($request->social_user_key);
@@ -229,51 +229,6 @@ class UserRepository extends BaseRepository
         $token = auth('api')->login($user);  // 会直接通过 jwt-auth 返回 token
 
         return $this->respondWithToken($token);
-    }
-
-    /**
-     * 「暂时没用到」
-     *
-     * 普通方式注册（直接使用图片验证码验证）
-     * 支持用户名「/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/」、中国手机号、邮箱三种账号方式
-     *
-     * @param $request
-     * @return bool|mixed
-     * @throws ApiException
-     */
-    public function normalRegister($request)
-    {
-        $captchaData = cache($request->captcha_key);
-        if (!$captchaData) {
-            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码已失效']);
-            return false;
-        }
-
-        if (!hash_equals($captchaData['captcha_code'], $request->captcha_code)) {
-            // 输入的图片验证码错误则直接删除掉
-            \Cache::forget($request->captcha_key);
-            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码错误']);
-            return false;
-        }
-
-         $account = $request->account;
-         $accountField = fetchAccountField($account);
-         if ('name' === $accountField) {
-             if (!validateUserName($account)) {
-                 Code::setCode(Code::ERR_PARAMS, null, ['账号需以字母开头，可以包括字母、数字、下划线、横杠']);
-                 return false;
-             }
-         }
-         $item = $this->getSingleRecord($account, $accountField, false);
-         if ($item) throw new ApiException(Code::ERR_USER_EXIST);
-
-         $input = [
-             $accountField => $account,
-             'password' => bcrypt($request->password)
-         ];
-         $user = $this->store($input);
-
-         return $user;
     }
 
     /**
@@ -316,6 +271,7 @@ class UserRepository extends BaseRepository
         if (!$socialUser) {
             // 否则直接用 openid 去查询。$oauthUser->getId() 默认为 openid
             if (SocialUser::$loginType[SocialUser::SOCIAL_QYWEIXIN] === $socialType) {
+                // 如果此时为企业微信的时候
                 $socialUser = SocialUser::where('openid', $qyoauthUser['openid'])->where('social_type', $socialTypeCode)->first();
                 $insertData = [
                     'openid' => $qyoauthUser['openid'],
@@ -326,6 +282,7 @@ class UserRepository extends BaseRepository
                     'headimgurl' => $qyoauthUser['headimgurl'],
                 ];
             } else {
+                // 如果此时为 socialiteproviders 包支持的登录方式时
                 $socialUser = SocialUser::where('openid', $oauthUser->getId())->where('social_type', $socialTypeCode)->first();
                 $insertData = [
                     'nickname' => $oauthUser->getNickname(),   // Laravel\Socialite\AbstractUser::class@getNickname
@@ -337,7 +294,7 @@ class UserRepository extends BaseRepository
         }
 
         if (!empty($socialUser->user_id)) {
-            // 如果此时已经有了 user_id
+            // 如果此时已经有了 user_id ，则表示已经绑定了手机号
             $user = User::find($socialUser->user_id);
             if (empty($user)) {
                 Code::setCode(Code::ERR_MODEL, '主账号不存在');
@@ -351,9 +308,17 @@ class UserRepository extends BaseRepository
         $insertData['created_at'] = date('Y-m-d H:i:s');
         $insertData['updated_at'] = date('Y-m-d H:i:s');
 
-        if (!$socialUser) {  // 如果没有第三方登录的记录，则先将数据插入表中
+        // 如果此时用户已经登录，但是需要绑定第三方授权登录时
+        if (auth('api')->check()) {
+            $insertData['user_id'] = auth('api')->id();
+        }
+
+        if (!$socialUser) {  // 如果没有第三方授权登录的记录，则先将数据插入表中，之后再强制要求绑定手机号
             $id = SocialUser::insertGetId($insertData);
         }
+
+        // 如果是用户已经登录，之后想再绑定第三方登录账号，则当数据插入之后就直接返回
+        if (auth('api')->check()) return;
 
         $socialUserId = $id ?? $socialUser->id;
 
@@ -368,7 +333,6 @@ class UserRepository extends BaseRepository
 
         return $result;
     }
-
 
     /**
      * socialiteproviders 包系列授权登录方式
@@ -476,6 +440,47 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * 已经登录的用户提供 openid 绑定第三方授权账号
+     *
+     * @param $request
+     * @return bool
+     */
+    public function boundSocial($request)
+    {
+        $socialType = strtolower($request->social_type);
+
+        if (!in_array($socialType, SocialUser::$loginType)) {
+            Code::setCode(Code::ERR_HTTP_NOT_FOUND);
+            return false;
+        }
+
+        // 第三方授权登录标识 code
+        $socialTypeCode = array_flip(SocialUser::$loginType)[$socialType];
+
+        $where = [
+            'openid' => $request->openid,
+            'social_type' => $socialTypeCode,
+        ];
+
+        $socialUser = $this->socialUserModel->where($where)->first();
+        if ($socialUser) {
+            Code::setCode(Code::ERR_MODEL_EXIST, $socialType . '已绑定，无需重复绑定');
+            return false;
+        }
+
+        $input = [
+            'openid' => $request->openid,
+            'unionid' => $request->unionid,
+            'user_id' => auth('api')->id(),
+            'social_type' => $socialTypeCode,
+        ];
+        $this->socialUserModel->fill($input);
+        // 如果第三方授权表中没有记录，则表示需要新绑定
+        $this->socialUserModel->save($input);
+
+    }
+
+    /**
      * 重置密码
      *
      * @param $request
@@ -500,6 +505,51 @@ class UserRepository extends BaseRepository
         $user = $this->getSingleRecord($resetPwdData['phone'], 'phone');
 
         return $this->update($user->id, ['password' => bcrypt($request->new_password)]);
+    }
+
+    /**
+     * 「暂时没用到」
+     *
+     * 普通方式注册（直接使用图片验证码验证）
+     * 支持用户名「/^[a-zA-Z]([-_a-zA-Z0-9]{3,20})+$/」、中国手机号、邮箱三种账号方式
+     *
+     * @param $request
+     * @return bool|mixed
+     * @throws ApiException
+     */
+    public function normalRegister($request)
+    {
+        $captchaData = cache($request->captcha_key);
+        if (!$captchaData) {
+            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码已失效']);
+            return false;
+        }
+
+        if (!hash_equals($captchaData['captcha_code'], $request->captcha_code)) {
+            // 输入的图片验证码错误则直接删除掉
+            \Cache::forget($request->captcha_key);
+            Code::setCode(Code::ERR_PARAMS, null, ['图片验证码错误']);
+            return false;
+        }
+
+        $account = $request->account;
+        $accountField = fetchAccountField($account);
+        if ('name' === $accountField) {
+            if (!validateUserName($account)) {
+                Code::setCode(Code::ERR_PARAMS, null, ['账号需以字母开头，可以包括字母、数字、下划线、横杠']);
+                return false;
+            }
+        }
+        $item = $this->getSingleRecord($account, $accountField, false);
+        if ($item) throw new ApiException(Code::ERR_USER_EXIST);
+
+        $input = [
+            $accountField => $account,
+            'password' => bcrypt($request->password)
+        ];
+        $user = $this->store($input);
+
+        return $user;
     }
 
     /**

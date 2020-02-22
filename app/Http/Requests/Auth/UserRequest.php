@@ -35,6 +35,7 @@ class UserRequest extends Request
             ],
             'checkBound' => [
                 'openid' => 'required|string',
+                'unionid' => 'string'
             ],
             'socialLogin' => [
                 'openid' => 'required_without:social_user_key|string',
@@ -62,6 +63,10 @@ class UserRequest extends Request
                 ],
                 'current_password' => 'required_with:new_password|string|min:6',
                 'new_password' => 'required_with:current_password|string|min:6|confirmed',  // new_password_confirmation
+            ],
+            'boundSocial' => [
+                'openid' => 'required|string',
+                'unionid' => 'string'
             ],
             'resetPwd' => [
                 'new_password' => 'required|string|min:6',

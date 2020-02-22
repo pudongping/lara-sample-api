@@ -43,7 +43,6 @@ Route::group([
     Route::patch('resetPwd', 'Auth\UsersController@resetPwd')->name('users.resetPwd');
     // 短信验证码
     Route::post('verificationCodes', 'Auth\VerificationCodesController@store')->name('verificationCodes.store');
-
 });
 
 Route::group([
@@ -59,13 +58,15 @@ Route::group([
     // 登录后可以访问的接口
     Route::middleware(['auth:api'])->group(function () {
         // 刷新token
-        Route::put('authorizations/current', 'Auth\UsersController@refreshToken')->name('authorizations.refreshToken');
+        Route::put('authorizations/refreshToken', 'Auth\UsersController@refreshToken')->name('authorizations.refreshToken');
         // 删除token
-        Route::delete('authorizations/current', 'Auth\UsersController@logout')->name('authorizations.logout');
+        Route::delete('authorizations/logout', 'Auth\UsersController@logout')->name('authorizations.logout');
         // 当前登录用户信息
         Route::get('user', 'Auth\UsersController@me')->name('user.show');
         // 编辑登录用户信息
         Route::patch('user', 'Auth\UsersController@update')->name('user.update');
+        // 绑定第三方授权账号（客户端直接提供 openid）
+        Route::patch('user/{social_type}/bound', 'Auth\UsersController@boundSocial')->name('user.boundSocial');
 
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
