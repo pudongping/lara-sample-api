@@ -31,6 +31,7 @@ class EnableCross
         $allowOrigin = [
             'http://localhost:8080',
             'http://localhost:*',
+            'http://shop.drling.xin',
         ];
 
         if (in_array($origin, $allowOrigin)) {

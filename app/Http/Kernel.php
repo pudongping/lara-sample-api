@@ -42,6 +42,8 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            // 开启跨域
+            \App\Http\Middleware\EnableCross::class,
             // 以下为自定义中间件
             // 初始化参数
             \App\Http\Middleware\InitParams::class,
