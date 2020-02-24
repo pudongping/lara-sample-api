@@ -29,7 +29,8 @@ class EnableCross
         $origin = $request->server('HTTP_ORIGIN') ? $request->server('HTTP_ORIGIN') : '';
         // 允许跨域的 url 列表
         $allowOrigin = [
-//            'http://localhost:8080',
+            'http://localhost:8080',
+            'http://localhost:*',
         ];
 
         if (in_array($origin, $allowOrigin)) {
