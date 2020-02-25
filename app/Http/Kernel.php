@@ -76,6 +76,8 @@ class Kernel extends HttpKernel
 
         // 当后台管理菜单设置权限之后判断是否有访问权限
         'check_admin_menus' => \App\Http\Middleware\CheckAdminMenusMiddleware::class,
+        // 自动刷新 token
+        'api_refresh_token' => \App\Http\Middleware\RefreshTokenMiddleware::class,
 
         // https://learnku.com/articles/19477  Laravel-permission 默认中间件
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,

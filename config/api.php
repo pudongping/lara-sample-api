@@ -55,6 +55,8 @@ return [
     'custom_jwt' => [
         // 当登录时勾选记住我时，默认 token 有效期设置为 10080 分钟，也就是一星期
         'remember_me_ttl' => env('JWT_REMEMBER_ME_TTL', 10080),
+        // 距离多少秒之后开启自动刷新
+        'auto_refresh_time' => env('JWT_AUTO_REFRESH_TIME', 60),
     ],
 
     /*

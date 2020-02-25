@@ -46,7 +46,7 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => ['throttle:' . config('api.rate_limits.access')],  // 1分钟/60次
+    'middleware' => ['throttle:' . config('api.rate_limits.access'), 'api_refresh_token'],  // 1分钟/60次
     'as' => 'api.'
 ], function () {
 
