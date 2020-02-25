@@ -29,8 +29,6 @@ class RefreshTokenMiddleware
 
         $leadTime =  $exp - time();  // 过期时间减去当前时间为时间差
 
-        $refreshToken = null;
-
         if ($leadTime <= $defaultPer) {
             // 当时间差小于或者等于约定的时间时，主动去刷新 token
             $userRespository = app('App\Repositories\Auth\UserRepository');
@@ -40,9 +38,8 @@ class RefreshTokenMiddleware
             $refreshToken = \Cache::remember('auto_refresh_key', 60, function () use ($userRespository) {
                 return $userRespository->refreshToken()['access_token'];
             });
+            $response->header('refresh_token', $refreshToken);
         }
-
-        $response->header('refresh_token', $refreshToken);
 
         return $response;
     }
