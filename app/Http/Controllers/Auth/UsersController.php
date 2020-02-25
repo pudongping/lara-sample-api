@@ -164,9 +164,9 @@ class UsersController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function resetPwd(UserRequest $request)
+    public function resetPassword(UserRequest $request)
     {
-        $data = $this->userRepository->resetPwd($request);
+        $data = $this->userRepository->resetPassword($request);
         return $this->response->send($data);
     }
 

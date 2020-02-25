@@ -93,14 +93,14 @@ class UserRepository extends BaseRepository
     {
         $registerData = cache($request->register_key);
         if (!$registerData) {
-            Code::setCode(Code::ERR_PARAMS, null, ['注册信息已失效，请重新注册']);
+            Code::setCode(Code::ERR_PARAMS, '注册信息已失效，请重新注册');
             return false;
         }
 
         if (!hash_equals($registerData['phone_code'], $request->phone_code)) {
             // 输入的短信验证码错误则直接删除掉
             \Cache::forget($request->register_key);
-            Code::setCode(Code::ERR_PARAMS, null, ['短信验证码错误']);
+            Code::setCode(Code::ERR_PARAMS, '短信验证码错误');
             return false;
         }
 
@@ -117,6 +117,7 @@ class UserRepository extends BaseRepository
 
     /**
      * 直接使用 openid 登录时，第一步，检查是否已经绑定了手机号，绑定了则直接登录
+     * 通过检查 「social_users」 表中 user_id 是否不为 0，来判断是否已经绑定了手机号，存在 user_id 则一定绑定了手机号
      *
      * @param $request
      * @return array|bool
@@ -142,7 +143,7 @@ class UserRepository extends BaseRepository
             $socialUser = SocialUser::where('openid', $request->openid)->where('social_type', $socialTypeCode)->first();
         }
 
-        if (empty($socialUser) || !isset($socialUser->user_id)) {
+        if (empty($socialUser) || empty($socialUser->user_id)) {
             Code::setCode(Code::ERR_NEED_BOUND, null, ['手机号']);
             return false;
         }
@@ -160,7 +161,9 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     *
      * 直接使用 openid 登录时，第二步，如果此时是新账户则需要绑定手机号（需要先调用发送手机验证码的接口）
+     * 授权在服务端时，需要绑定手机号的情况下
      *
      * @param $request
      * @return array|bool
@@ -180,38 +183,41 @@ class UserRepository extends BaseRepository
 
         $phoneData = cache($request->phone_key);
         if (!$phoneData) {
-            Code::setCode(Code::ERR_PARAMS, null, ['短信验证码已失效']);
+            Code::setCode(Code::ERR_PARAMS, '短信验证码已失效');
             return false;
         }
 
         if (!hash_equals($phoneData['phone_code'], $request->phone_code)) {
             // 输入的短信验证码错误则直接删除掉
             \Cache::forget($request->phone_key);
-            Code::setCode(Code::ERR_PARAMS, null, ['短信验证码错误']);
+            Code::setCode(Code::ERR_PARAMS, '短信验证码错误');
             return false;
         }
 
         // 此时为第三方登录在 服务端授权时。如果直接传 openid 给服务端则表示前端已经授权完毕了
         $socialUserId = null;
-        if ($request->social_user_key || is_null($request->openid)) {
+        if ($request->social_user_key) {
             $socialUserData = cache($request->social_user_key);
             if (!$socialUserData) {
                 Code::setCode(Code::ERR_PARAMS, '授权登录失败，请重新授权');
                 return false;
             }
-            $socialUserId = $socialUserData['social_user_id'];
+            $socialUserId = $socialUserData['social_user_id'];  // 授权在服务端时，先保存到缓存中的 social_users 表的 id
         }
 
         \DB::beginTransaction();
         try {
             $user = $this->getSingleRecord($phoneData['phone'], 'phone', false);
             if (!$user) {
+                // 「直接使用 openid 注册场景」 或 「授权登录在服务端授权，但是没有绑定手机号的场景」时
                 $user = $this->store(['phone' => $phoneData['phone']]);
             }
 
             if ($socialUserId) {
+                // 第三方登录在服务端授权时，此时的注册场景只需要将用户表 `users` 的 id 写入到 `social_users` 表中 user_id 做关联即可
                 $this->socialUserModel->where('id', $socialUserId)->update(['user_id' => $user->id]);
             } else {
+                // 直接使用 openid 注册场景时
                 $input = $request->all();
                 $input['openid'] = $request->openid;
                 $input['user_id'] = $user->id;
@@ -232,7 +238,9 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     *  第三方授权登录（授权在服务端，需要客户端传 code 或者 openid 的情况）
+     * 授权在服务端时
+     *
+     *  第三方授权登录（授权在服务端，需要客户端传 code 或者 access_token，「如果是微信授权登录 传 access_token 的同时，还需要传 openid 」 的情况）
      *
      * @param $request
      * @return array|bool
@@ -313,7 +321,7 @@ class UserRepository extends BaseRepository
             $insertData['user_id'] = auth('api')->id();
         }
 
-        if (!$socialUser) {  // 如果没有第三方授权登录的记录，则先将数据插入表中，之后再强制要求绑定手机号
+        if (!$socialUser) {  // 如果没有第三方授权登录的记录（ 类似于第三方授权在注册的情况下），则先将数据插入表中，之后再强制要求绑定手机号
             $id = SocialUser::insertGetId($insertData);
         }
 
@@ -464,7 +472,7 @@ class UserRepository extends BaseRepository
 
         $socialUser = $this->socialUserModel->where($where)->first();
         if ($socialUser) {
-            Code::setCode(Code::ERR_MODEL_EXIST, $socialType . '已绑定，无需重复绑定');
+            Code::setCode(Code::ERR_MODEL_EXIST, '已绑定，无需重复绑定');
             return false;
         }
 
@@ -487,18 +495,18 @@ class UserRepository extends BaseRepository
      * @return bool|mixed
      * @throws \Exception
      */
-    public function resetPwd($request)
+    public function resetPassword($request)
     {
         $resetPwdData = cache($request->phone_key);
         if (!$resetPwdData) {
-            Code::setCode(Code::ERR_PARAMS, null, ['短信验证码已失效，请重新获取']);
+            Code::setCode(Code::ERR_PARAMS, '短信验证码已失效，请重新获取');
             return false;
         }
 
         if (!hash_equals($resetPwdData['phone_code'], $request->phone_code)) {
             // 输入的短信验证码错误则直接删除掉
             \Cache::forget($request->phone_key);
-            Code::setCode(Code::ERR_PARAMS, null, ['短信验证码错误']);
+            Code::setCode(Code::ERR_PARAMS, '短信验证码错误');
             return false;
         }
 

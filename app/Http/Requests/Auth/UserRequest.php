@@ -43,6 +43,10 @@ class UserRequest extends Request
                 'phone_key' => 'required|string',
                 'phone_code' => 'required|string',
             ],
+            'login' => [
+                'account' => 'required|between:4,40|string',
+                'password' => ['required', 'string', 'min:6']
+            ],
             'socialStore' => [
                 'code' => 'required_without:access_token|string',
                 'access_token' => 'required_without:code|string',
@@ -68,7 +72,7 @@ class UserRequest extends Request
                 'openid' => 'required|string',
                 'unionid' => 'string'
             ],
-            'resetPwd' => [
+            'resetPassword' => [
                 'new_password' => 'required|string|min:6',
                 'phone_key' => 'required|string',
                 'phone_code' => 'required|string',

@@ -40,7 +40,7 @@ Route::group([
     // 用户名/邮箱/手机号/登录
     Route::post('authorizations', 'Auth\UsersController@login')->name('authorizations.login');
     // 找回密码
-    Route::patch('resetPwd', 'Auth\UsersController@resetPwd')->name('users.resetPwd');
+    Route::patch('resetPassword', 'Auth\UsersController@resetPassword')->name('users.resetPassword');
     // 短信验证码
     Route::post('verificationCodes', 'Auth\VerificationCodesController@store')->name('verificationCodes.store');
 });

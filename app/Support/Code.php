@@ -86,7 +86,7 @@ class Code
         self::ERR_QRCODE => '二维码生成错误',
         self::ERR_USER_EXIST => '账号已存在',
         self::ERR_MODEL_EXIST => '%s 数据已存在',
-        self::ERR_NEED_BOUND => '%s 未绑定',
+        self::ERR_NEED_BOUND => '%s未绑定',
     ];
 
     /**
