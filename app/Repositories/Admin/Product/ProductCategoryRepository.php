@@ -85,5 +85,16 @@ class ProductCategoryRepository extends BaseRepository
         return $this->update($request->category->id, $input);
     }
 
+    /**
+     * 检查类目 id 的有效性
+     *
+     * @param array $cateIds
+     * @return array
+     */
+    public function checkCateIds(array $cateIds) : array
+    {
+       return $this->model->whereIn('id', $cateIds)->pluck('id')->toArray();
+    }
+
 
 }

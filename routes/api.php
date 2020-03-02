@@ -170,5 +170,16 @@ Route::group([
         // 删除类目
         Route::delete('product/categories/{category}', 'Admin\Product\ProductCategoryController@destroy')->name('product.categories.destroy');
 
+        // 商品品牌列表
+        Route::get('product/brands', 'Admin\Product\ProductBrandController@index')->name('product.brands.index');
+        // 新建品牌
+        Route::post('product/brands', 'Admin\Product\ProductBrandController@store')->name('product.brands.store');
+        // 编辑显示类目
+        Route::get('product/brands/{brand}/edit', 'Admin\Product\ProductBrandController@edit')->name('product.brands.edit');
+        // 编辑品牌数据提交
+        Route::patch('product/brands/{brand}', 'Admin\Product\ProductBrandController@update')->name('product.brands.update');
+        // 删除品牌
+        Route::delete('product/brands/{brand}', 'Admin\Product\ProductBrandController@destroy')->name('product.brands.destroy');
+
     });
 });
