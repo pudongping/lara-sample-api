@@ -22,7 +22,7 @@ class UserAddressRepository extends BaseRepository
         $this->model = $userAddressModel;
     }
 
-    public function store($request)
+    public function storage($request)
     {
         $input = $request->only(['province', 'city', 'district', 'address', 'zip', 'contact_name', 'contact_phone']);
         return $request->user()->addresses()->create($input);

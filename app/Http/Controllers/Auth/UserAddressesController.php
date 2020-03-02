@@ -34,7 +34,7 @@ class UserAddressesController extends Controller
 
     public function store(UserAddressRequest $request)
     {
-        $data = $this->userAddressRepository->store($request);
+        $data = $this->userAddressRepository->storage($request);
         return $this->response->send($data);
     }
 

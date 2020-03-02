@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Product\ProductCategory;
+use App\Observers\Product\ProductCategoryObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // 注册观察者
+
+        ProductCategory::observe(ProductCategoryObserver::class);
+
     }
 }

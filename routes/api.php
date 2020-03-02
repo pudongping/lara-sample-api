@@ -156,5 +156,19 @@ Route::group([
         // 抽奖概率测试
         Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
 
+        // =======================商品相关=========================
+        // 商品类目列表
+        Route::get('product/categories', 'Admin\Product\ProductCategoryController@index')->name('product.categories.index');
+        // 商品类目树型结构
+        Route::get('product/categoryTree', 'Admin\Product\ProductCategoryController@categoryTree')->name('product.categories.categoryTree');
+        // 新建类目
+        Route::post('product/categories', 'Admin\Product\ProductCategoryController@store')->name('product.categories.store');
+        // 编辑显示类目
+        Route::get('product/categories/{category}/edit', 'Admin\Product\ProductCategoryController@edit')->name('product.categories.edit');
+        // 编辑类目-数据提交
+        Route::patch('product/categories/{category}', 'Admin\Product\ProductCategoryController@update')->name('product.categories.update');
+        // 删除类目
+        Route::delete('product/categories/{category}', 'Admin\Product\ProductCategoryController@destroy')->name('product.categories.destroy');
+
     });
 });

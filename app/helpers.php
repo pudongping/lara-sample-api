@@ -232,3 +232,33 @@ if (! function_exists('http_get')) {
         return $result;
     }
 }
+
+if (! function_exists('makeTreeData')) {
+    /**
+     * 对数据进行树型结构处理
+     *
+     * @param array $data  需要处理的数据 二维数组
+     * @param int $root  顶级数据的标识
+     * @param int $level  需要几层子级（设置足够大的数字，意味着需要无限级）
+     * @param array $column   父级字段名、数据本身字段名、子级字段名
+     * @return array
+     */
+    function makeTreeData(array $data, $root = 0, $level = 1000, $column = ['parent_column' => 'pid', 'children_column' => 'id', 'grandson_column' => 'children'])
+    {
+        $tree = [];
+        $parentColumn = $column['parent_column'];
+        $childrenColumn = $column['children_column'];
+        $grandsonColumn = $column['grandson_column'];
+        foreach ($data as $item) {
+            if ($root === (int)$item[$parentColumn]) {
+                if ($level > 0) {
+                    $item[$grandsonColumn] = makeTreeData($data, $item[$childrenColumn], $level-1);
+                }
+                // 顶级
+                $tree[] = $item;
+            }
+        }
+        --$level;
+        return $tree;
+    }
+}
