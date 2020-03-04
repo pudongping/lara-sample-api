@@ -262,3 +262,21 @@ if (! function_exists('makeTreeData')) {
         return $tree;
     }
 }
+
+if (! function_exists('img_with_base_url')) {
+    /**
+     * 使图片的相对路径成为网址绝对路径
+     *
+     * @param $imgPath
+     * @return string
+     */
+    function img_with_base_url($imgPath)
+    {
+        if (empty($imgPath)) return '';
+        // 如果 image 字段本身就已经是完整的 url 就直接返回
+        if (Str::startsWith($imgPath, ['http://', 'https://'])) {
+            return $imgPath;
+        }
+        return config('app.url') . $imgPath;
+    }
+}

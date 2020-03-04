@@ -12,7 +12,6 @@ namespace App\Exceptions;
 
 use Exception;
 use App\Support\Code;
-use Throwable;
 
 class ApiException extends Exception
 {

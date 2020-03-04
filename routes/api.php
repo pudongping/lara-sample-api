@@ -119,10 +119,10 @@ Route::group([
         Route::group(['middleware' => ['role:Administrator']], function () {
             // 角色
             Route::resource('roles', 'Auth\RolesController')->except('show');
-            Route::delete('roles_mass_destroy', 'Auth\RolesController@massDestroy')->name('roles.mass_destroy');
+            Route::delete('rolesMassDestroy', 'Auth\RolesController@massDestroy')->name('roles.massDestroy');
             // 权限
             Route::resource('permissions', 'Auth\PermissionsController')->except('show');
-            Route::delete('permissions_mass_destroy', 'Auth\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+            Route::delete('permissionsMassDestroy', 'Auth\PermissionsController@massDestroy')->name('permissions.massDestroy');
             // 管理员列表
             Route::get('users', 'Auth\AdminsController@index')->name('users.index');
             // 创建新管理员-数据处理
@@ -152,7 +152,7 @@ Route::group([
         // 菜单
         Route::resource('menus', 'Admin\Setting\MenusController')->except(['create', 'show']);
         // 清空所有缓存
-        Route::get('clear_cache', 'Admin\Setting\SettingsController@clearCache')->name('settings.clear_cache');
+        Route::get('clearCache', 'Admin\Setting\SettingsController@clearCache')->name('settings.clearCache');
         // 抽奖概率测试
         Route::get('prizes/probably', 'Common\PrizesController@probably')->name('prizes.probably');
 
