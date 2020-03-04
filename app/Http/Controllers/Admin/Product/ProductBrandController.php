@@ -80,14 +80,14 @@ class ProductBrandController extends Controller
     /**
      * 删除品牌
      *
-     * @param ProductBrandRequest $request
      * @param ProductBrand $brand
      * @return mixed
-     * @throws \App\Exceptions\ApiException
+     * @throws \Exception
      */
-     public function destroy(ProductBrandRequest $request, ProductBrand $brand)
+     public function destroy(ProductBrand $brand)
      {
-         $this->productBrandRepository->destroy($request);
+         $brand->delete();
+         $brand->categories()->detach();
          return $this->response->send();
      }
 

@@ -125,25 +125,6 @@ class ProductBrandRepository extends BaseRepository
     }
 
     /**
-     *  删除品牌
-     *
-     * @param $request
-     * @throws ApiException
-     */
-    public function destroy($request)
-    {
-        \DB::beginTransaction();
-        try {
-            $request->brand->delete();
-            \DB::table('product_categories_pivot_brands')->where('brand_id', $request->brand->id)->delete();
-            \DB::commit();
-        } catch (\Exception $exception) {
-            throw new ApiException(Code::ERR_QUERY);
-            \DB::rollBack();
-        }
-    }
-
-    /**
      * 拼接 品牌-类目 关联表所需数据
      *
      * @param array $categoryIds
