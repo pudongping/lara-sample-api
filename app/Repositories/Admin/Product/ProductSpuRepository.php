@@ -304,6 +304,12 @@ class ProductSpuRepository extends BaseRepository
         return $preSkusTemp;
     }
 
+    /**
+     * 获取当前商品 sku 所有的属性和属性值的排列组合（因为 2_3|1_2| 和 1_2|2_3| 属于同一个 sku）
+     *
+     * @param string $keyAttrOptStr  「商品属性-商品属性选项」字符串，eg：2_3|1_2
+     * @return array
+     */
     private function getKeyInAllCombineArr(string $keyAttrOptStr) : array
     {
         $strArr = str_explode($keyAttrOptStr, '|');
