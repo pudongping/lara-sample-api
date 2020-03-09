@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product\ProductCategory;
 use App\Observers\Product\ProductCategoryObserver;
+use App\Models\Product\ProductSpu;
+use App\Observers\Product\ProductSpuObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         // 注册观察者
 
         ProductCategory::observe(ProductCategoryObserver::class);
+        ProductSpu::observe(ProductSpuObserver::class);
 
     }
 }

@@ -66,8 +66,7 @@ class ProductCategory extends Model
      */
     public function getPathIdsAttribute()
     {
-        // array_filter 将数组中的空值移除
-        return array_filter(explode('-', trim($this->path, '-')));
+        return str_explode($this->path, '-');
     }
 
     /**
