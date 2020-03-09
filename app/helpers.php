@@ -280,3 +280,18 @@ if (! function_exists('img_with_base_url')) {
         return config('app.url') . $imgPath;
     }
 }
+
+if (! function_exists('str_explode')) {
+    /**
+     * 用指定分隔符切割字符串
+     *
+     * @param string $str  需要切割的字符串
+     * @param string $delimiter  分隔符
+     * @return array  以分隔符切割的数组
+     */
+    function str_explode(string $str, string $delimiter) : array
+    {
+        // array_filter 将数组中的空值移除
+        return array_filter(explode($delimiter, trim($str, $delimiter)));
+    }
+}
