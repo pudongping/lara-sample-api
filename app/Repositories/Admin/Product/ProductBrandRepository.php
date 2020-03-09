@@ -80,13 +80,14 @@ class ProductBrandRepository extends BaseRepository
         \DB::beginTransaction();
         try {
             $brand = $this->store($input);
-            $insertData = $this->makeCateBrandIds($validateCateIds, $brand->id);
-            \DB::table('product_categories_pivot_brands')->insert($insertData);
+            // 多对多插入关联表
+            $brand->categories()->attach($validateCateIds);
             \DB::commit();
         } catch (\Exception $exception) {
             throw new ApiException(Code::ERR_QUERY);
             \DB::rollBack();
         }
+
         return $brand;
     }
 
@@ -110,39 +111,16 @@ class ProductBrandRepository extends BaseRepository
         \DB::beginTransaction();
         try {
             $brand = $this->update($request->brand->id, $input);
-
-            // 先删除关联表中的数据
-            \DB::table('product_categories_pivot_brands')->where('brand_id', $request->brand->id)->delete();
-            $insertData = $this->makeCateBrandIds($validateCateIds, $request->brand->id);
-            \DB::table('product_categories_pivot_brands')->insert($insertData);
+            // 多对多插入关联表（先删除关联数据，后写入）
+            $brand->categories()->sync($validateCateIds);
             \DB::commit();
-
         } catch (\Exception $exception) {
             throw new ApiException(Code::ERR_QUERY);
             \DB::rollBack();
         }
+
         return $brand;
     }
 
-    /**
-     * 拼接 品牌-类目 关联表所需数据
-     *
-     * @param array $categoryIds
-     * @param $brandId
-     * @return array
-     */
-    private function makeCateBrandIds(array $categoryIds, $brandId) : array
-    {
-        $data = [];
-        $item = [];
-        foreach ($categoryIds as $categoryId) {
-            $item['category_id'] = intval($categoryId);
-            $item['brand_id'] = $brandId;
-            $item['created_at'] = now();
-            $item['updated_at'] = now();
-            $data[] = $item;
-        }
-        return $data;
-    }
 
 }
