@@ -500,6 +500,8 @@ class ProductSpuRepository extends BaseRepository
                 // 删除掉 「sku-属性-属性选项关联表」中的数据
                 ProductAttributeSkuOption::whereIn('sku_id', $skuIds)->delete();
             }
+            // 同步 sku 最低价格和 sku 总库存到 spu 表中（需要重新查询一次 sku 表，以便获取准备的数据）
+            $this->model->find($request->spu->id)->updateLowestPriceOrStock();
             \DB::commit();
         } catch (\Exception $exception) {
             \DB::rollBack();

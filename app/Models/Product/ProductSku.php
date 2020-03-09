@@ -15,5 +15,15 @@ class ProductSku extends Model
         'stock', 'code', 'barcode', 'key_attr_option'
     ];
 
+    /**
+     * 一个 sku 对应一个 spu
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function spu()
+    {
+        return $this->belongsTo(ProductSpu::class, 'id', 'spu_id');
+    }
+
 
 }

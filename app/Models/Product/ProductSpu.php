@@ -134,6 +134,19 @@ class ProductSpu extends Model
         return $this->hasMany(ProductSku::class, 'spu_id', 'id');
     }
 
+    /**
+     * 同步 sku 最低价格和 sku 总库存到 spu 表中
+     */
+    public function updateLowestPriceOrStock()
+    {
+        $skus = $this->skus->toArray();
+        $minPrice = collect(array_column($skus, 'price'))->min();  // 计算所有 sku 中的最低价格
+        $totalStock = collect(array_column($skus, 'stock'))->sum();  // 计算所有 sku 的总库存
+        $this->price = $minPrice;
+        $this->stock = $totalStock;
+        $this->save();
+    }
+
 
 }
 
