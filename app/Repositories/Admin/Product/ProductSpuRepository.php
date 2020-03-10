@@ -449,7 +449,6 @@ class ProductSpuRepository extends BaseRepository
 
             \DB::commit();
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
             \DB::rollBack();
             throw new ApiException(Code::ERR_QUERY);
         }
