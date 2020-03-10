@@ -12,9 +12,13 @@ class ProductSpusSeeder extends Seeder
      */
     public function run()
     {
+
+        ProductSpu::truncate();
+
         $productSpus = factory(ProductSpu::class, 30)->create();
         foreach ($productSpus as $spus) {
             $spus->categories()->attach([10, 11, 12, 13]);
         }
+
     }
 }
