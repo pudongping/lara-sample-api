@@ -95,6 +95,17 @@ class ProductSpu extends Model
     }
 
     /**
+     * 只允许特定状态的商品被访问
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAllowStatus($query)
+    {
+        return $query->where('status', self::STATUS_PUTWAY);
+    }
+
+    /**
      * 商品和类目-多对多关系
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

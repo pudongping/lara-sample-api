@@ -61,6 +61,16 @@ class ProductBrandRepository extends BaseRepository
     }
 
     /**
+     * 所有可见的品牌
+     *
+     * @return mixed
+     */
+    public function allBrands()
+    {
+        return $this->model->select(['id', 'name', 'description', 'log_url'])->allowStatus()->get()->toArray();
+    }
+
+    /**
      * 新建品牌
      *
      * @param $request

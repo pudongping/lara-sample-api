@@ -233,7 +233,7 @@ if (! function_exists('http_get')) {
     }
 }
 
-if (! function_exists('makeTreeData')) {
+if (! function_exists('make_tree_data')) {
     /**
      * 对数据进行树型结构处理
      *
@@ -243,7 +243,7 @@ if (! function_exists('makeTreeData')) {
      * @param array $column   父级字段名、数据本身字段名、子级字段名
      * @return array
      */
-    function makeTreeData(array $data, $root = 0, $level = 1000, $column = ['parent_column' => 'pid', 'children_column' => 'id', 'grandson_column' => 'children'])
+    function make_tree_data(array $data, $root = 0, $level = 1000, $column = ['parent_column' => 'pid', 'children_column' => 'id', 'grandson_column' => 'children'])
     {
         $tree = [];
         $parentColumn = $column['parent_column'];
@@ -252,7 +252,7 @@ if (! function_exists('makeTreeData')) {
         foreach ($data as $item) {
             if ($root === (int)$item[$parentColumn]) {
                 if ($level > 0) {
-                    $item[$grandsonColumn] = makeTreeData($data, $item[$childrenColumn], $level-1);
+                    $item[$grandsonColumn] = make_tree_data($data, $item[$childrenColumn], $level-1);
                 }
                 // 顶级
                 $tree[] = $item;

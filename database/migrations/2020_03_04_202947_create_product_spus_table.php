@@ -16,7 +16,7 @@ class CreateProductSpusTable extends Migration
     {
         Schema::create('product_spus', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category_ids')->index()->default('')->comment('分类id，比如：1,2,3');
+            $table->string('category_ids')->index()->default('')->comment('分类id，比如：[1,2,3]');
             $table->unsignedInteger('brand_id')->default(0)->comment('品牌id');
             $table->string('title')->default('')->comment('商品标题');
             $table->string('unit', 20)->default('')->comment('单位');
@@ -80,7 +80,7 @@ class CreateProductSpusTable extends Migration
             $table->unsignedInteger('stock')->default(0)->index()->comment('sku 库存');
             $table->string('code')->default('')->comment('商品编码');
             $table->string('barcode')->default('')->comment('商品条形码');
-            $table->string('key_attr_option')->default('')->comment('销售属性和销售属性值，比如：颜色-黑色|尺寸-xl');
+            $table->string('key_attr_option')->default('')->comment('销售属性和销售属性值，比如：3_8|1_3| 表示 => 颜色_黑色|尺寸_xl|');
             $table->index(['name', 'spu_id']);
             $table->softDeletes();
             $table->timestamps();

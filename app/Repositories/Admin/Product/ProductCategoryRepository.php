@@ -53,8 +53,19 @@ class ProductCategoryRepository extends BaseRepository
     public function categoryTree()
     {
         $result = ProductCategory::all('id', 'pid', 'name')->toArray();
-        $result = makeTreeData($result);
+        $result = make_tree_data($result);
         return $result;
+    }
+
+    /**
+     * 所有可见的类目树型结构
+     *
+     * @return array
+     */
+    public function allCateTree()
+    {
+        $allCate = $this->model->select('id', 'pid', 'name')->allowStatus()->get()->toArray();
+        return make_tree_data($allCate);
     }
 
     /**

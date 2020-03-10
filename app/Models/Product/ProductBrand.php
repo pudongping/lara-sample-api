@@ -41,6 +41,28 @@ class ProductBrand extends Model
     }
 
     /**
+     * log 地址获取器
+     *
+     * @param $value
+     * @return string
+     */
+    public function getLogUrlAttribute($value)
+    {
+        return img_with_base_url($value);
+    }
+
+    /**
+     * 只允许访问 「启用」状态的品牌
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAllowStatus($query)
+    {
+        return $query->where('status', self::STATUS_ENABLE);
+    }
+
+    /**
      * 多对多关系-品牌和类目
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

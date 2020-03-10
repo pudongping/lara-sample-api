@@ -96,4 +96,15 @@ class ProductCategory extends Model
                     ->implode(' - '); // 用 - 符号将数组的值组装成一个字符串
     }
 
+    /**
+     * 只允许访问 「启用」状态的类目
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeAllowStatus($query)
+    {
+        return $query->where('status', self::STATUS_ENABLE);
+    }
+
 }

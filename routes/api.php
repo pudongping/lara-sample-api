@@ -46,7 +46,7 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => ['throttle:' . config('api.rate_limits.access'), 'api_refresh_token'],  // 1分钟/60次
+    'middleware' => ['throttle:' . config('api.rate_limits.access')],  // 1分钟/60次
     'as' => 'api.'
 ], function () {
 
@@ -55,8 +55,19 @@ Route::group([
     // 某个用户的详情
     Route::get('users/{user}', 'Auth\UsersController@show')->name('users.show');
 
+    // =======================商品相关=========================
+    Route::group(['prefix' => 'product'], function () {
+        // 商品类目树型结构
+        Route::get('allCateTree', 'Api\Product\ProductSpuController@allCateTree')->name('product.spus.allCateTree');
+        // 所有的商品品牌
+        Route::get('allBrands', 'Api\Product\ProductSpuController@allBrands')->name('product.spus.allBrands');
+        // 商品相关
+        Route::get('spus', 'Api\Product\ProductSpuController@index')->name('product.spus.index');
+    });
+
+
     // 登录后可以访问的接口
-    Route::middleware(['auth:api'])->group(function () {
+    Route::middleware(['auth:api'], 'api_refresh_token')->group(function () {
         // 刷新token
         Route::put('authorizations/refreshToken', 'Auth\UsersController@refreshToken')->name('authorizations.refreshToken');
         // 删除token
