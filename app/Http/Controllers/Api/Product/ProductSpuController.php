@@ -60,9 +60,16 @@ class ProductSpuController extends Controller
         return $this->response->send($data);
     }
 
-
-
-
-
+    /**
+     * 商品详情
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function detail(Request $request)
+    {
+        $data = $this->productSpuRepository->detail($request);
+        return $this->response->send($data);
+    }
 
 }

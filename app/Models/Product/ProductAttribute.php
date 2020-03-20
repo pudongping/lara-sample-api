@@ -30,7 +30,7 @@ class ProductAttribute extends Model
      */
     public function attributeOptions()
     {
-        return $this->hasMany(ProductAttributeOption::class, 'id', 'attribute_id');
+        return $this->hasMany(ProductAttributeOption::class, 'attribute_id', 'id');
     }
 
 }

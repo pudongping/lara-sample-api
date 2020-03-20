@@ -28,6 +28,8 @@ class ProductCategory extends Model
         'status' => 'boolean',
     ];
 
+    protected $hidden = ['pivot'];
+
     /**
      * 一对多关联-一个类目允许有多个子类目
      *

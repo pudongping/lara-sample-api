@@ -61,8 +61,10 @@ Route::group([
         Route::get('allCateTree', 'Api\Product\ProductSpuController@allCateTree')->name('product.spus.allCateTree');
         // 所有的商品品牌
         Route::get('allBrands', 'Api\Product\ProductSpuController@allBrands')->name('product.spus.allBrands');
-        // 商品相关
+        // 商品列表
         Route::get('spus', 'Api\Product\ProductSpuController@index')->name('product.spus.index');
+        // 商品详情
+        Route::get('detail', 'Api\Product\ProductSpuController@detail')->name('product.spus.detail');
     });
 
 
