@@ -38,7 +38,8 @@ class RefreshTokenMiddleware
             $refreshToken = \Cache::remember('auto_refresh_key', 60, function () use ($userRespository) {
                 return $userRespository->refreshToken()['access_token'];
             });
-            $response->header('refresh_token', $refreshToken);
+            // 遵循下 http 请求头命名规范
+            $response->header('Refresh-Token', $refreshToken);
         }
 
         return $response;
