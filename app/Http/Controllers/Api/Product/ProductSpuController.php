@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Api\Product\ProductSpuRepository;
 use App\Repositories\Admin\Product\ProductBrandRepository;
 use App\Repositories\Admin\Product\ProductCategoryRepository;
+use App\Models\Product\ProductSpu;
 
 class ProductSpuController extends Controller
 {
@@ -69,6 +70,44 @@ class ProductSpuController extends Controller
     public function detail(Request $request)
     {
         $data = $this->productSpuRepository->detail($request);
+        return $this->response->send($data);
+    }
+
+    /**
+     *  收藏商品
+     *
+     * @param ProductSpu $product
+     * @param Request $request
+     * @return mixed
+     */
+    public function favor(ProductSpu $product, Request $request)
+    {
+        $data = $this->productSpuRepository->favor($request);
+        return $this->response->send($data);
+    }
+
+    /**
+     * 取消收藏商品
+     *
+     * @param ProductSpu $product
+     * @param Request $request
+     * @return mixed
+     */
+    public function disfavor(ProductSpu $product, Request $request)
+    {
+        $data = $this->productSpuRepository->disfavor($request);
+        return $this->response->send($data);
+    }
+
+    /**
+     * 收藏商品列表
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function favorites(Request $request)
+    {
+        $data = $this->productSpuRepository->favorites($request);
         return $this->response->send($data);
     }
 

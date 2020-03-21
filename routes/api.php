@@ -92,6 +92,13 @@ Route::group([
         // 删除收货地址
         Route::delete('userAddresses/{user_address}', 'Auth\UserAddressesController@destroy')->name('userAddresses.destroy');
 
+        // 用户收藏商品
+        Route::post('products/{product}/favorite', 'Api\Product\ProductSpuController@favor')->name('products.favor');
+        // 用户取消收藏商品
+        Route::delete('products/{product}/favorite', 'Api\Product\ProductSpuController@disfavor')->name('products.disfavor');
+        // 收藏商品列表
+        Route::get('products/favorites', 'Api\Product\ProductSpuController@favorites')->name('products.favorites');
+
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 抽奖

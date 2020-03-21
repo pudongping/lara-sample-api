@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Auth\SocialUser;
+use App\Models\Product\ProductSpu;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -82,6 +83,18 @@ class User extends Authenticatable implements JWTSubject
     public function addresses()
     {
         return $this->hasMany(UserAddress::class, 'user_id', 'id');
+    }
+
+    /**
+     * 用户收藏商品 -（用户-商品多对多关联）
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function favoriteProducts()
+    {
+        return $this->belongsToMany(ProductSpu::class, 'user_favorite_products', 'user_id', 'product_id')
+            ->withTimestamps()
+            ->orderBy('user_favorite_products.created_at', 'desc');
     }
 
 }

@@ -112,7 +112,15 @@ class ProductSpuRepository extends BaseRepository
         // 添加是否禁用销售属性选项到属性-属性选项关联数组中
         $attrsDisable = self::addIsDisableAttr($attrs, $unableAttrOpt);
 
+        // 添加是否显示「收藏按钮」
+        $favored = false;
+        if ($user = $request->user()) {
+            // 从当前用户已收藏的商品中搜索 id 为当前商品 id 的商品
+            $favored = boolval($user->favoriteProducts()->find($request->id));
+        }
+
         $spuArr = $spu->toArray();
+        $spuArr['favored'] = $favored;  // 用户是否已经收藏了该商品
         $spuArr['attrs'] = $attrsDisable;
         $spuArr['skus'] = $skus;
 
@@ -180,6 +188,42 @@ class ProductSpuRepository extends BaseRepository
             }
         }
         return $attrs;
+    }
+
+    /**
+     * 收藏商品
+     *
+     * @param $request
+     */
+    public function favor($request)
+    {
+        $user = $request->user();
+        // 判断用户是否已经收藏了商品
+        $hasFavor = $user->favoriteProducts()->find($request->product->id);
+        if (!$hasFavor) {
+            $user->favoriteProducts()->attach($request->product);
+        }
+    }
+
+    /**
+     * 取消收藏商品
+     *
+     * @param $request
+     */
+    public function disfavor($request)
+    {
+        $request->user()->favoriteProducts()->detach($request->product);
+    }
+
+    /**
+     * 收藏商品列表
+     *
+     * @param $request
+     * @return mixed
+     */
+    public function favorites($request)
+    {
+        return $this->usePage($request->user()->favoriteProducts(), null, null);
     }
 
 
