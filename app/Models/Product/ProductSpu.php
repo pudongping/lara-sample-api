@@ -53,6 +53,16 @@ class ProductSpu extends Model
     }
 
     /**
+     * 获取状态的原始值
+     *
+     * @return mixed
+     */
+    public function getOriginalStatusAttribute()
+    {
+        return $this->attributes['status'];
+    }
+
+    /**
      * 定义轮播图-修改器
      *
      * @param $value

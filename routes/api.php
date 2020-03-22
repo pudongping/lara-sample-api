@@ -99,6 +99,9 @@ Route::group([
         // 收藏商品列表
         Route::get('products/favorites', 'Api\Product\ProductSpuController@favorites')->name('products.favorites');
 
+        // 添加购物车
+        Route::post('cart', 'Api\Product\CartController@store')->name('cart.store');
+
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
         // 抽奖

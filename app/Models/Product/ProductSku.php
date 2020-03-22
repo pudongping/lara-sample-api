@@ -22,7 +22,7 @@ class ProductSku extends Model
      */
     public function spu()
     {
-        return $this->belongsTo(ProductSpu::class, 'id', 'spu_id');
+        return $this->belongsTo(ProductSpu::class, 'spu_id', 'id');
     }
 
 

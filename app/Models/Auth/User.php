@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Auth\SocialUser;
 use App\Models\Product\ProductSpu;
+use App\Models\Product\CartItem;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -95,6 +96,16 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(ProductSpu::class, 'user_favorite_products', 'user_id', 'product_id')
             ->withTimestamps()
             ->orderBy('user_favorite_products.created_at', 'desc');
+    }
+
+    /**
+     * 用户-购物车记录 - （一对多关联）
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'user_id', 'id');
     }
 
 }
