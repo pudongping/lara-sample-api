@@ -101,6 +101,10 @@ Route::group([
 
         // 添加购物车
         Route::post('cart', 'Api\Product\CartController@store')->name('cart.store');
+        // 购物车列表
+        Route::get('cart', 'Api\Product\CartController@index')->name('cart.index');
+        // 移除购物车
+        Route::delete('cart/{sku}', 'Api\Product\CartController@remove')->name('cart.remove');
 
         // 上传图片
         Route::post('images', 'Common\ImagesController@store')->name('images.store');
