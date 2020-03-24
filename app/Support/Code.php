@@ -45,6 +45,8 @@ class Code
     const ERR_FILE_UP_LOAD = 10005;
     const ERR_PERM = 10006;
     const ERR_EXCEL_COLUMN = 10007;
+    const ERR_BAIDU_ADDRESS = 10008;
+
 
     /**
      * 20000 服务级别错误
@@ -80,6 +82,7 @@ class Code
         self::ERR_FILE_UP_LOAD => '文件上传出错',
         self::ERR_PERM => '没有该操作权限，请联系管理员',
         self::ERR_EXCEL_COLUMN => 'Excel文件列数异常',
+        self::ERR_BAIDU_ADDRESS => '无法通过百度地图获取地址',
 
         self::ERR_MENU_FIELD => '该菜单存在子菜单，无法删除',
         self::ERR_EXPORT => '导出文件失败，请联系管理员',

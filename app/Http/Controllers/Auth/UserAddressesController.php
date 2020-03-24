@@ -15,16 +15,21 @@ use Illuminate\Http\Request;
 use App\Repositories\Auth\UserAddressRepository;
 use App\Models\Auth\UserAddress;
 use App\Http\Requests\Auth\UserAddressRequest;
+use App\Handlers\AddressHandler;
 
 class UserAddressesController extends Controller
 {
 
     protected $userAddressRepository;
+    protected $addressHandler;
 
-    public function __construct(UserAddressRepository $userAddressRepository)
-    {
+    public function __construct(
+        UserAddressRepository $userAddressRepository,
+        AddressHandler $addressHandler
+    ) {
         $this->init();
         $this->userAddressRepository = $userAddressRepository;
+        $this->addressHandler = $addressHandler;
     }
 
     public function index(Request $request)
@@ -59,6 +64,12 @@ class UserAddressesController extends Controller
 
         $user_address->delete();
         return $this->response->send();
+    }
+
+    public function getAddressByLngLat(UserAddressRequest $request)
+    {
+        $data = $this->addressHandler->fetchAddressByLngLat($request);
+        return $this->response->send($data);
     }
 
 }

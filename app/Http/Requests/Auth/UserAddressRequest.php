@@ -32,6 +32,10 @@ class UserAddressRequest extends Request
                 'contact_name'  => 'required',
                 'contact_phone' => 'required',
             ],
+            'getAddressByLngLat' => [
+                'lng'           => 'required',
+                'lat'           => 'required',
+            ],
         ];
 
         return $this->useRule($rules);
@@ -47,6 +51,8 @@ class UserAddressRequest extends Request
             'zip'           => '邮编',
             'contact_name'  => '联系人姓名',
             'contact_phone' => '联系人电话',
+            'lng'           => '经度坐标',
+            'lat'           => '维度坐标',
         ];
     }
 

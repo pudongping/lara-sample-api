@@ -91,6 +91,8 @@ Route::group([
         Route::put('userAddresses/{user_address}', 'Auth\UserAddressesController@update')->name('userAddresses.update');
         // 删除收货地址
         Route::delete('userAddresses/{user_address}', 'Auth\UserAddressesController@destroy')->name('userAddresses.destroy');
+        // 通过用户的经纬度获取当前用户的地址
+        Route::get('getAddressByLngLat', 'Auth\UserAddressesController@getAddressByLngLat')->name('userAddresses.getAddressByLngLat');
 
         // 用户收藏商品
         Route::post('products/{product}/favorite', 'Api\Product\ProductSpuController@favor')->name('products.favor');
