@@ -25,7 +25,7 @@ class AddressHandler
 
     /**
      * 通过经纬度获取详细地址
-     * @link https://lbsyun.baidu.com/index.php?title=jspopular/guide/geocoding
+     * @link http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad
      *
      * @param $request
      * @return array
@@ -45,16 +45,7 @@ class AddressHandler
         // 百度地图接口出错时
         if (0 !== $result['status']) throw new ApiException(Code::ERR_BAIDU_ADDRESS);
 
-        $data = [
-            'province' => $result['result']['addressComponent']['province'],
-            'city' => $result['result']['addressComponent']['city'],
-            'district' => $result['result']['addressComponent']['district'],
-            'address' => $result['result']['addressComponent']['street'] . $result['result']['addressComponent']['street_number'],
-            'zip' => $result['result']['addressComponent']['adcode'],  // 邮编
-            'formatted_address' => $result['result']['formatted_address'],
-        ];
-
-        return $data;
+        return $result;
     }
 
 }
