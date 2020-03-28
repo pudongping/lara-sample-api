@@ -9,6 +9,8 @@ use App\Models\Product\ProductSpu;
 use App\Observers\Product\ProductSpuObserver;
 use App\Models\Product\ProductSku;
 use App\Observers\Product\ProductSkuObserver;
+use App\Models\Order\Order;
+use App\Observers\Order\OrderObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         ProductCategory::observe(ProductCategoryObserver::class);
         ProductSpu::observe(ProductSpuObserver::class);
         ProductSku::observe(ProductSkuObserver::class);
+        Order::observe(OrderObserver::class);
 
     }
 }
