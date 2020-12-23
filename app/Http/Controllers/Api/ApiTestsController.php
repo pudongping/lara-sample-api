@@ -9,14 +9,18 @@ use App\Models\Admin\Setting\Log;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
 use App\Support\Transformer;
 use Illuminate\Database\Eloquent\Collection;
+use App\Repositories\Auth\SocialAuthRepository;
 
 
 class ApiTestsController extends Controller
 {
 
-    public function __construct()
+    protected $socialAuthRepository;
+
+    public function __construct(SocialAuthRepository $socialAuthRepository)
     {
         $this->init();
+        $this->socialAuthRepository = $socialAuthRepository;
     }
 
     /**
@@ -27,28 +31,11 @@ class ApiTestsController extends Controller
     public function index()
     {
 
-        $logs = Log::paginate(3);
+        $code = 'BHbbvTSzVp4i0jQJ7Yv3MFCvTTFGGpMoo_9VoQBt3fc';
 
-        $this->response->addMetaa(['page' => [1,2,3,4,5,6], 'key2' => 'data2']);
-        return $this->response->send($logs, ['client_ip', 'id']);
+        $rr = $this->socialAuthRepository->qywxUser($code);
 
-        $transformer = new Transformer();
-
-        $logs = Log::paginate(3);
-
-        $transformer->addMeta([
-            'key1' => 'data1',
-            'key2' => 'data2'
-        ]);
-
-        $transformer->fieldsets('id,client_ip,created_at');
-        $res = $transformer->collection($logs);
-
-        dd($res);
-
-        $result = Log::find(1);
-        dd(get_class($result));
-
+        dd($rr);
     }
 
 
