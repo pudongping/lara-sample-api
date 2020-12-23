@@ -60,6 +60,12 @@ class LogInfo
             'url' => $request->url(),
             // 请求中所有参数
             'params' => $request->all(),
+            // 请求中用户的代理信息
+            'userAgent' => $request->userAgent(),
+            // 请求的完整 url （带参数）
+            'fullUrl' => $request->fullUrl(),
+            // 外部请求源链接地址
+            'origin' => $request->header('Origin'),
         ];
     }
 
