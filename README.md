@@ -1,18 +1,31 @@
 ## 项目概述
 - 项目名称：lara-sample-api
-- 项目简介：基于 laravel6.x 开发的 api 接口
+- 项目简介：  
+这是一个基于 laravel6.x 开发的商城 api 接口，里面已经完成了大部分接口，但因门户接口和管理后台接口没有分离，在同个项目下，后续接口
+太多，很容易导致接口冗乱，因此故将此项目拆分成了 `lara-shop-api` 门户接口和 `lara-shop-cms` 后台管理接口两个项目。目前此项目
+**暂且不打算维护了** 更多功能请移步 `lara-shop-api` 门户接口和 `lara-shop-cms` 后台管理接口两个项目。当然你也可以继续使用此项目
+功能都是好的，唯一的缺点是门户接口和管理接口在同一项目下，没有拆分。
 
+## 关于分支
+
+> 如果不需要已经写好的功能模块，那么可以直接切换到 `base-api-function` 分支，这个分支中只保留了基础 api 架构方法。通过这个分支，你可以快速的搭建适合于业务场景的 api 服务。
+> `master` 分支中所以的功能均是基于 `base-api-function` 分支的基础架构方法所开发的。（使用了 `base-api-function` 分支，但是不知道这些基础方法如何使用，完全可以参考 `master` 分支中的写法）
 
 ## 功能如下
-- 用户认证 —— 基于 jwt 认证登录、注册、登出；
+- 用户认证 —— 基于 jwt 认证登录、注册、登出、找回密码
+- 图片验证码、短信验证码
 - 支持多 guard （目前门户为：api、后台管理为：admin）
 - 前后台用户支持多种普通认证形式 —— 账号、手机号、邮箱
 - 前台用户第三方登录目前支持 —— 微信、微博（后续若需要支持其他第三方登录，只需要下载安装包即可，代码已经做了兼容处理）
-- 个人中心 —— 用户个人中心，编辑资料；
-- 资源管理（上传图片） —— 修改头像时上传图片；
-- 基于 RBAC 的权限控制 —— 用户，角色，权限，路由；
+- 个人中心 —— 用户个人中心，编辑资料
+- 资源管理（上传图片） —— 修改头像时上传图片
+- 基于 RBAC 的权限控制 —— 用户，角色，权限，路由
 - 抽奖算法（支持大转盘、九宫格、刮刮乐）
+- SPU —— 多品牌、多类目（类目树形结构）、收藏商品、购物车
+- 多规格 SKU
+- 图片资源系统
 - 系统设置
+- 更多功能 …… 你可以直接通过查看 `routes/api.php` 路由文件中了解，均有详细的注释信息
 
 ## 后端扩展包使用情况
 
@@ -28,15 +41,18 @@
 [composer require overtrue/laravel-query-logger --dev](https://github.com/overtrue/laravel-query-logger) | 查询日志组件 | 记录每次 sql 查询日志
 [spatie/laravel-permission](https://github.com/spatie/laravel-permission) | 角色权限管理 | 角色和权限控制
 
-## 接口文档采用 postman 编写
+## 关于文档
+### 接口文档采用 postman 编写
 
 接口文档资料位于 `/doc/lara-api.postman_collection-V1.json` 采用 postman v1 版格式导出（需注意，目前 postman 支持 `Collection v1 (deprecated)` 、`Collection v2` 、`Collection v2.1 (recommended)` 三种版本）
 
 ![接口](https://upload-images.jianshu.io/upload_images/14623749-3c0a8bc291c7dbf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 注意
+**关于登录的接口，**，因为兼容了多种情况的登录（前端授权登录、后端授权登录、手机号登录、用户名登录……）相对来说，调用登录相关的接口会比较复杂，因此这里提供了专门的 `doc/login-doc.md` 文档，用于配合前端调用
 
-> 如果不需要已经写好的功能模块，那么可以直接切换到 `base-api-function` 分支，这个分支中只保留了基础 api 架构方法。
+`doc/image/cms-sku` 文件夹中有后台管理平台如何设计多规格的 `sku` 原型图    
+
+`doc/image/数据库-思维脑图` 文件夹中有相关的数据库设计脑图
 
 ## 安装
 
@@ -46,7 +62,10 @@
 
 ```
 // gitee
-git clone git@gitee.com:pudongping/lara-sample-api.git
+git clone https://gitee.com/pudongping/lara-sample-api.git
+
+// github
+git clone https://github.com/pudongping/lara-sample-api.git
 ```
 
 2. 安装扩展包依赖
